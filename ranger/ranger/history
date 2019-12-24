@@ -1,0 +1,50 @@
+open_console 
+open_with gimp
+open_with fe
+open_with feh
+open_with pager
+search zdev
+find modules
+find mintt
+find mint
+search mint
+cu
+rename Desktop
+compress screens.zip
+compress
+shell jpegoptim %f
+image_opt 
+find zd
+find dev
+find firebase_p
+find Cha
+find Tic
+get_cumulative_size 
+shell '
+rename UAN-details.png
+search chat
+rename Blizzard Dragon Ball Super Broly.mp3
+shell  %s
+shell 
+open_with 1
+rename Form12BB
+rename Form12BB.pdf
+find ho
+com
+compress cells.tar.gz
+mkdir example
+open_with 
+find zom
+compress src.tar.gz
+find 
+mkdir robo3t
+find zo
+mkdir document-db-report
+open_withg
+open_with viv
+
+open_with vivaldi
+search /
+extracthere 
+find Pe
+delete

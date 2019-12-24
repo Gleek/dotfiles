@@ -1,0 +1,62 @@
+! xrdb ~/.Xresources
+
+URxvt.intensityStyles:	false
+! URxvt.foreground: #ABB2BF
+! URxvt.background:       [95]#282C34
+URxvt.font: xft:Hack:size=10
+URxvt.transparent: false
+URxvt.depth:		24
+URxvt.scrollBar:	false
+URxvt.saveLines: 50000
+! URxvt.cursorColor:	#528BFF
+URxvt.letterSpace: -2
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-G: command:\033c
+! URxvt.termName: rxvt-unicode-256color
+URxvt.termName: xterm-256color
+!! Extensions
+URxvt.perl-ext-common:	default,matcher,resize-font,keyboard-select,selection-to-clipboard
+URxvt.colorUL:		#4682B4
+!! url-select
+URxvt.keysym.M-u:	perl:url-select:select_next
+URxvt.url-select.launcher: linkhandler
+URxvt.url-select.underline: true
+!! keyboard-select:
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keyboard-select.clipboard: true
+! resize-font
+URxvt.resize-font.smaller:	C-minus
+URxvt.resize-font.bigger:	C-plus
+URxvt.resize-font.reset:    C-equal
+!! Matcher
+URxvt.url-launcher:	xdg-open
+URxvt.matcher.button:	1
+URxvt.foreground:    #ABB2BF
+URxvt.background:    [90]#1E2127
+URxvt.cursorColor:   #5C6370
+URxvt.highlightColor:#3A3F4B
+
+! Black and grey
+URxvt.color0:        #1E2127
+URxvt.color8:        #5C6370
+! Red
+URxvt.color1:        #E06C75
+URxvt.color9:        #E06C75
+! Green
+URxvt.color2:        #98C379
+URxvt.color10:       #98C379
+! Orange
+URxvt.color3:        #D19A66
+URxvt.color11:       #D19A66
+! Blue
+URxvt.color4:        #61AFEF
+URxvt.color12:       #61AFEF
+! Magenta
+URxvt.color5:        #C678DD
+URxvt.color13:       #C678DD
+! Cyan
+URxvt.color6:        #56B6C2
+URxvt.color14:       #56B6C2
+! White
+URxvt.color7:        #ABB2BF
+URxvt.color15:       #FFFFFF

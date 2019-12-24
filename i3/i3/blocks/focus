@@ -1,0 +1,14 @@
+#!/bin/bash
+
+focus=$(xdotool getactivewindow getwindowname)
+focus_Number=$(xdotool getactivewindow getwindowname | wc -c)
+Focus_N=$(xdotool getactivewindow getwindowname | head -c 40 | iconv -f utf-8 -t utf-8)
+if [ "$focus" = "" ];then
+    echo " : Gatter Linux "
+else
+    if [ "$focus_Number" -gt "40" ];then
+        echo " : $Focus_N…"
+    else
+        echo " : $focus"
+    fi
+fi

@@ -1,0 +1,17 @@
+color background        white black
+color info              white color244
+color listfocus         black cyan
+color listfocus_unread  black cyan bold
+
+# notif
+notify-program "notify-send"
+
+# storage
+download-path "/mnt/data/Podcasts/"
+max-downloads 3
+
+# programs
+browser "w3m %u"
+player "mpv --no-video"
+macro m set browser "ts mpv %u --ytdl-format 'bestvideo[height<=?480]+bestaudio/best'"; open-in-browser ; set browser "w3m %u"
+macro p set browser "playboat"; enqueue ; open-in-browser ; set browser "w3m %u"
