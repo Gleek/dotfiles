@@ -1,11 +1,3 @@
-open_console 
-open_with gimp
-open_with fe
-open_with feh
-open_with pager
-search zdev
-find modules
-find mintt
 find mint
 search mint
 cu
@@ -33,7 +25,6 @@ find ho
 com
 compress cells.tar.gz
 mkdir example
-open_with 
 find zom
 compress src.tar.gz
 find 
@@ -46,5 +37,14 @@ open_with viv
 open_with vivaldi
 search /
 extracthere 
-find Pe
+search sd
+open_with 
+find ru
+find med
+search .MOV
+cd  qqqq
+find h
+find me
 delete
+find Pe
+rename visa-umar.pdf

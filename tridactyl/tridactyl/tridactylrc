@@ -1,0 +1,51 @@
+set hintfiltermode vimperator
+set hintchars 1234567890
+unbind <C-f>
+
+
+bind / fillcmdline find
+" But also support Tridactyl search too.
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+" Remove search highlighting.
+bind ,<Space> nohlsearch
+" Use sensitive case. Smart case would be nice here, but it doesn't work.
+set findcase sensitive
+
+set hintdelay 100
+
+" Smooth scrolling, yes please. This is still a bit janky in Tridactyl.
+set smoothscroll false
+
+" The default jump of 10 is a bit much.
+bind j scrollline 5
+bind k scrollline -5
+
+colourscheme dark
+set tabopencontaineraware false
+
+
+
+autocmd DocStart mail.google.com mode ignore
+
+
+
+
+" Inject Google Translate
+" This (clearly) is remotely hosted code. Google will be sent the whole
+" contents of the page you are on if you run `:translate`
+" From https://github.com/jeremiahlee/page-translator
+command translate js let googleTranslateCallback = document.createElement('script'); googleTranslateCallback.innerHTML = "function googleTranslateElementInit(){ new google.translate.TranslateElement(); }"; document.body.insertBefore(googleTranslateCallback, document.body.firstChild); let googleTranslateScript = document.createElement('script'); googleTranslateScript.charset="UTF-8"; googleTranslateScript.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&tl=&sl=&hl="; document.body.insertBefore(googleTranslateScript, document.body.firstChild);
+
+
+
+" Add helper commands that Mozillians think make Firefox irredeemably
+" insecure. For details, read the comment at the top of this file.
+command fixamo_quiet jsb tri.excmds.setpref("privacy.resistFingerprinting.block_mozAddonManager", "true").then(tri.excmds.setpref("extensions.webextensions.restrictedDomains", '""'))
+command fixamo js tri.excmds.setpref("privacy.resistFingerprinting.block_mozAddonManager", "true").then(tri.excmds.setpref("extensions.webextensions.restrictedDomains", '""').then(tri.excmds.fillcmdline_tmp(3000, "Permissions added to user.js. Please restart Firefox to make them take affect.")))
+
+" Make Tridactyl work on more sites at the expense of some security. For
+" details, read the comment at the top of this file.
+fixamo_quiet

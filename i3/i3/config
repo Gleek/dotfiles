@@ -16,7 +16,7 @@ set $mod Mod4
 set $term urxvt
 set $music "urxvt -title floating_term -e ncmpcpp"
 set $notes emacsclient -c ~/Dropbox/org-files/Notes.org -F '((name . "Notes"))'
-set $perf "terminator -b -e gotop --title=floating_term"
+set $perf "terminator -b -e htop --title=floating_term"
 # set $ranger "termite -e ranger"
 # set $ranger "terminator -b -e ranger --title=floating_term"
 
@@ -172,8 +172,9 @@ bindsym $mod+Ctrl+Left move workspace to output left
 bindsym $mod+Ctrl+Right move workspace to output right
 bindsym $mod+Ctrl+Up move workspace to output up
 bindsym $mod+Ctrl+Down move workspace to output down
+bindsym $mod+Tab workspace back_and_forth
 
-assign [class="Firefox"] $workspace1
+# assign [class="Firefox"] $workspace1
 assign [instance="emacs"] $workspace2
 # assign [class="Rhythmbox"] $workspace3
 
