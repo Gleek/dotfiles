@@ -10,4 +10,5 @@ stow -t ~/.config mpd
 stow -t ~/.config mpDris2
 stow -t ~/.config newsboat
 stow -t ~/.config ranger
+stow -t ~/.config rofi
 ```

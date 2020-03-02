@@ -1,0 +1,4 @@
+# include /home/umar/.config/rofi/themes/android_notification.theme
+rofi.font: Hack 10
+rofi.location:0
+rofi.width:50
