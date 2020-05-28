@@ -20,6 +20,12 @@ index+=1
 
 TILES[$index]="QR Show"
 COMMANDS[$index]="~/.config/rofi/scripts/qr.sh"
+index+=1
+
+TILES[$index]="NES Games"
+COMMANDS[$index]="~/.config/rofi/scripts/nestopia.sh"
+index+=1
+
 
 function gen_entries {
     for a in $(seq 1 $(( ${#TILES[@]} )))

@@ -11,7 +11,7 @@ download-path "/mnt/data/Podcasts/"
 max-downloads 3
 
 # programs
-browser "w3m %u"
+browser "firefox %u"
 player "mpv --no-video"
-macro m set browser "ts mpv %u --ytdl-format 'bestvideo[height<=?480]+bestaudio/best'"; open-in-browser ; set browser "w3m %u"
-macro p set browser "playboat"; enqueue ; open-in-browser ; set browser "w3m %u"
+macro m set browser "ts mpv %u --ytdl-format 'bestvideo[height<=?480]+bestaudio/best'"; open-in-browser ; set browser "firefox %u"
+macro p set browser "playboat"; enqueue ; open-in-browser ; set browser "firefox %u"

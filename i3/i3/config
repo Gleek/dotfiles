@@ -16,7 +16,7 @@ set $mod Mod4
 set $term urxvt
 set $music "urxvt -title floating_term -e ncmpcpp"
 set $notes emacsclient -c ~/Dropbox/org-files/Notes.org -F '((name . "Notes"))'
-set $perf "terminator -b -e htop --title=floating_term"
+set $perf "terminator -b -e gotop --title=floating_term"
 # set $ranger "termite -e ranger"
 # set $ranger "terminator -b -e ranger --title=floating_term"
 
@@ -64,6 +64,7 @@ focus_follows_mouse no
 # bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+Return exec terminator -b -e "screen -dR session" --title "floating_term" # Start terminal in a screen
 bindsym $mod+Return exec urxvt -title floating_term -e screen -dR session  # Start terminal in a screen
+bindsym $mod+t exec urxvt
 bindsym $mod+Shift+Return exec urxvt -title small_floating_term -e qalc
 # bindsym $mod+Shift+Return exec rofi -show calc -modi calc:~/.config/rofi/scripts/calc.sh -font 'Hack 13'
 # bindsym $mod+Shift+Return exec terminator -b -e "scim .temp.csv" --title "small_floating_term" # Start a node session
@@ -71,7 +72,7 @@ bindsym $mod+m exec $music
 bindsym $mod+Shift+m [instance="deadbeef"] scratchpad show
 bindsym $mod+Shift+f exec $ranger
 
-bindsym $mod+n exec $notes
+bindsym $mod+n exec $notes, [title="Notes"] move workspace current
 # kill focused window
 bindsym $mod+q kill
 # start dmenu (a program launcher)
@@ -105,6 +106,11 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+bindsym $mod+Ctrl+Shift+Left move left 50 px
+bindsym $mod+Ctrl+Shift+Down move down 50 px
+bindsym $mod+Ctrl+Shift+Up move up 50 px
+bindsym $mod+Ctrl+Shift+Right move right 50 px
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -175,14 +181,15 @@ bindsym $mod+Ctrl+Down move workspace to output down
 bindsym $mod+Tab workspace back_and_forth
 
 # assign [class="Firefox"] $workspace1
-assign [instance="emacs"] $workspace2
+assign [instance="emacs" title="^(?!Notes).*$"] $workspace2
 # assign [class="Rhythmbox"] $workspace3
 
+for_window [class=".*"] split toggle
 # Authy
 for_window [instance="crx_gaedmjdfmmahhbjefcbgaolhhanlaolb"] floating enable
 
 # Emacs Notes
-for_window [instance="Notes"] floating enable
+for_window [title="Notes"] floating enable
 
 # Pritunl
 for_window [instance="pritunl"] floating enable
@@ -211,9 +218,10 @@ for_window [title="tiny_floating_term"] move position center
 for_window [instance="copyq"] floating enable
 for_window [instance="copyq"] move position center
 
-for_window[title="*SmartJump Peek*"] floating enable
+# Emacs smart jump peek
+for_window [title="\*SmartJump Peek\*"] floating enable
 
-for_window[instance="deadbeef"] move scratchpad
+# for_window[instance="deadbeef"] move scratchpad
 
 # for_window [instance="dropdown"] resize set 625 400
 # for_window [instance="dropdown"] move position center
@@ -247,6 +255,16 @@ mode "resize" {
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
+
+        # resize pre-configured
+        bindsym 1 resize set 100 100, move position center
+        bindsym 2 resize set 300 200, move position center
+        bindsym 3 resize set 500 300, move position center
+        bindsym 4 resize set 800 600, move position center
+        bindsym 5 resize set 1000 800, move position center
+        bindsym 6 resize set 1500 1200, move position center
+        bindsym 7 resize set 1700 1300, move position center
+        bindsym 8 resize set 1800 1400, move position center
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -349,7 +367,7 @@ exec_always feh --bg-scale /home/umar/.wallpaper.jpg
 exec /home/umar/.keyboard.sh
 exec xinput --set-prop bcm5974 "libinput Natural Scrolling Enabled" 1
 exec emacs
-exec --no-startup-id compton -bcCGf -i 0.8 --no-fading-openclose --mark-ovredir-focused --sw-opti
+exec --no-startup-id compton -bcCGf --shadow-exclude="name = 'cpt_frame_window'" -i 0.8 --no-fading-openclose --mark-ovredir-focused --sw-opti
 exec --no-startup-id nm-applet
 # Auto lock
 # exec --no-startup-id xautolock -time 3 -locker ~/.config/i3/lock.sh -corners -000
