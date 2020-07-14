@@ -52,7 +52,7 @@ starttime=$(($(date +%s%N)/1000000))
 # Turning off screen, there is some flickering in screen after coming
 # back, have to look into it.
 # xset dpms force off;
-mpc pause
+# mpc pause
 playerctl pause
 i3lock  -e -n -i /tmp/screen.png
 # i3lock  -e -n -c 000000
