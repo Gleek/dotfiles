@@ -3,12 +3,12 @@ starttime=$(($(date +%s%N)/1000000))
 scrot /tmp/screen.png
 endtime=$(($(date +%s%N)/1000000))
 echo $((endtime - starttime))
-du -sh /tmp/screen.png
+# du -sh /tmp/screen.png
 starttime=$(($(date +%s%N)/1000000))
 pngquant --force --ext .png --quality=0-10 -s10 --strip /tmp/screen.png
 endtime=$(($(date +%s%N)/1000000))
 echo $((endtime - starttime))
-du -sh /tmp/screen.png
+# du -sh /tmp/screen.png
 starttime=$(($(date +%s%N)/1000000))
 # convert /tmp/screen.png -paint 1 /tmp/screen.png
 # convert /tmp/screen.png -paint 1 -scale 10% -scale 1000% /tmp/screen.png
@@ -53,7 +53,7 @@ starttime=$(($(date +%s%N)/1000000))
 # back, have to look into it.
 # xset dpms force off;
 # mpc pause
-playerctl pause
+playerctl pause &
 i3lock  -e -n -i /tmp/screen.png
 # i3lock  -e -n -c 000000
 rm /tmp/screen.png

@@ -97,7 +97,7 @@ tray-position = right
 tray-padding = 0
 ;tray-background = #0063ff
 ;wm-restack = bspwm
-wm-restack = i3
+; wm-restack = i3
 ;override-redirect = true
 
 ;scroll-up = bspwm-desknext
@@ -570,6 +570,6 @@ screenchange-reload = true
 
 [global/wm]
 margin-top = 5
-margin-bottom = 5
+margin-bottom = 0
 
 ; vim:ft=dosini
