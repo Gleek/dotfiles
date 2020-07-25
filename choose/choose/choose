@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+choose -s 15 -w 30 -f "Fira Mono" -c a9a9a9
