@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-chosen=$(grep -v "#" ~/.config/choose/emojidata | ~/.config/choose/choose)
+chosen=$(grep -v "#" ~/.config/choose/emojidata | ~/.config/choose/choose false)
 
 [ "$chosen" != "" ] || exit
 

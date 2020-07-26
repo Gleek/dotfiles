@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
+SCROLL=$1 || true
+extraparams=()
 if [[ $INTERFACE == "GUI" ]]
 then
     choose -s 25 -w 30 -f "Fira Mono" -c a9a9a9
 else
     # fzy -l 50
-    fzf --reverse --no-hscroll
+    scrollparam="--no-hscroll"
+    fzf --reverse ${SCROLL:+"$scrollparam"}
 fi
 

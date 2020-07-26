@@ -18,8 +18,23 @@ TILES[$index]="Emoji"
 COMMANDS[$index]="~/.config/choose/emoji.sh"
 index+=1
 
+
+TILES[$index]="Find file"
+COMMANDS[$index]="~/.config/choose/findfile.sh"
+index+=1
+
+
+TILES[$index]="Killall"
+COMMANDS[$index]="~/.config/choose/killall.sh"
+index+=1
+
+
 TILES[$index]="QR Show"
 COMMANDS[$index]="~/.config/choose/qr.sh"
+index+=1
+
+TILES[$index]="Launch app"
+COMMANDS[$index]="~/.config/choose/applaunch.sh"
 index+=1
 
 # TILES[$index]="Kill - SIGTERM"
@@ -29,10 +44,6 @@ index+=1
 # TILES[$index]="Kill - SIGKILL"
 # COMMANDS[$index]="~/.config/choose/kill.sh 9"
 # index+=1
-
-TILES[$index]="Killall"
-COMMANDS[$index]="~/.config/choose/killall.sh"
-index+=1
 
 # TILES[$index]="TERM"
 # COMMANDS[$index]="~/.config/choose/term.sh"

@@ -4,14 +4,14 @@
 
 if [[ $INTERFACE == "GUI" ]]
 then
-    ~/.config/choose/options.sh
+    exec $1
 else
     kitty --single-instance \
           --instance-group="chooser" \
           -o font_size=20 \
           -o window_padding_width=10 \
           -o adjust_line_height=10 \
-          -o background_opacity=0.3 \
+          -d=~ \
           -T "chooser" \
-          ~/.config/choose/options.sh
+          $1
 fi
