@@ -22,17 +22,22 @@ TILES[$index]="QR Show"
 COMMANDS[$index]="~/.config/choose/qr.sh"
 index+=1
 
-TILES[$index]="Kill - SIGTERM"
-COMMANDS[$index]="~/.config/choose/kill.sh 15"
-index+=1
+# TILES[$index]="Kill - SIGTERM"
+# COMMANDS[$index]="~/.config/choose/kill.sh 15"
+# index+=1
 
-TILES[$index]="Kill - SIGKILL"
-COMMANDS[$index]="~/.config/choose/kill.sh 9"
-index+=1
+# TILES[$index]="Kill - SIGKILL"
+# COMMANDS[$index]="~/.config/choose/kill.sh 9"
+# index+=1
 
 TILES[$index]="Killall"
 COMMANDS[$index]="~/.config/choose/killall.sh"
 index+=1
+
+# TILES[$index]="TERM"
+# COMMANDS[$index]="~/.config/choose/term.sh"
+# index+=1
+
 
 # TILES[$index]="Apps"
 # COMMANDS[$index]="~/.config/choose/applaunch.sh"

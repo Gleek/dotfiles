@@ -174,17 +174,17 @@ alt - s : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if 
 # Applications
 alt - v : copyq show
 
-alt - d : ~/.config/choose/options.sh &
+alt - d : export INTERFACE="TUI" && ~/.config/choose/init &
 
 shift + alt - f : kitty -d ~ ranger &
 
 alt -  0x2A : kitty gotop &
 
 # open terminal
-alt - return : kitty -d ~ -T floating-term screen -dR session
+alt - return : kitty --single-instance -d ~ -T floating-term screen -dR session
 # open mpv with url from clipboard
 alt - m : mpv $(pbpaste)
-shift + alt - t : kitty -d ~
+shift + alt - t : kitty --single-instance -d ~
 
 alt - k : open -a KeePassXC
 

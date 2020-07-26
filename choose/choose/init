@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Pass interface as GUI to use choose or TUI to choose fzf
+
+if [[ $INTERFACE == "GUI" ]]
+then
+    ~/.config/choose/options.sh
+else
+    kitty --single-instance \
+          --instance-group="chooser" \
+          -o font_size=20 \
+          -o window_padding_width=10 \
+          -o adjust_line_height=10 \
+          -o background_opacity=0.3 \
+          -T "chooser" \
+          ~/.config/choose/options.sh
+fi

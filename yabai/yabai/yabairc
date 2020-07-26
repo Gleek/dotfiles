@@ -45,6 +45,8 @@ yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^CopyQ$" manage=off grid="50:50:20:15:9:20"
 yabai -m rule --add app="^choose$" manage=off
 yabai -m rule --add title="^floating-term" manage=off grid=4:4:1:1:2:2
+yabai -m rule --add title="^fullscreen-term" manage=off grid=4:4:0:0:4:4
+yabai -m rule --add title="^chooser" manage=off grid="50:50:15:10:20:35" opacity=0.9
 
 # signals
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"

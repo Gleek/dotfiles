@@ -2,5 +2,6 @@
 string=${1:-$(pbpaste)}
 
 echo $string |qrencode -o $TMPDIR/qr.png -s 30;
-qlmanage -p $TMPDIR/qr.png
+kitty --single-instance -T fullscreen-term ~/.config/kitty/icat $TMPDIR/qr.png &
+read
 rm $TMPDIR/qr.png
