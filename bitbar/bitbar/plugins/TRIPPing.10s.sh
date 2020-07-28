@@ -17,7 +17,7 @@
 
 # Notify the user
 notify () {
-    osascript -e "display notification \"Number of hops: $1\" with title \"TRIPPing\""	
+    osascript -e "display notification \"Number of hops: $1\" with title \"TRIPPing\""
 }
 
 # Get our public IPv4 and IPv6 addresses

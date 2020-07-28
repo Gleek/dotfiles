@@ -7,6 +7,6 @@ then
 else
     # fzy -l 50
     scrollparam="--no-hscroll"
-    fzf --reverse ${SCROLL:+"$scrollparam"}
+    fzf --reverse --bind change:top ${SCROLL:+"$scrollparam"}
 fi
 

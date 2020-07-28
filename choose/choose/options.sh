@@ -37,6 +37,10 @@ TILES[$index]="Launch app"
 COMMANDS[$index]="~/.config/choose/applaunch.sh"
 index+=1
 
+TILES[$index]="Power options"
+COMMANDS[$index]="~/.config/choose/power.sh"
+index+=1
+
 # TILES[$index]="Kill - SIGTERM"
 # COMMANDS[$index]="~/.config/choose/kill.sh 15"
 # index+=1

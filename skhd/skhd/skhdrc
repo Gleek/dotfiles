@@ -182,10 +182,10 @@ shift + alt - f : kitty -d ~ ranger &
 alt -  0x2A : kitty gotop &
 
 # open terminal
-alt - return : kitty --single-instance -d ~ -T floating-term screen -dR session
+alt - return : kitty --single-instance --instance-group=term -d ~ -T floating-term screen -dR session
 # open mpv with url from clipboard
 alt - m : mpv $(pbpaste)
-shift + alt - t : kitty --single-instance -d ~
+shift + alt - t : kitty --single-instance --instance-group=term -d ~
 
 alt - k : open -a KeePassXC
 
