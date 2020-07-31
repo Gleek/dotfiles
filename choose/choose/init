@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Pass interface as GUI to use choose or TUI to choose fzf
-
 if [[ $INTERFACE == "GUI" ]]
 then
     exec $1

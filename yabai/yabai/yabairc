@@ -34,19 +34,19 @@ yabai -m config window_gap                   06
 # yabai -m config --space 7 layout             float
 
 # window rules
-yabai -m rule --add app="^Firefox$" space=1
-yabai -m rule --add app="^Emacs$" space=2
+yabai -m rule --add label=firefox app="^Firefox$" space=1
+yabai -m rule --add label=emacs app="^Emacs$" space=2
 # yabai -m rule --add app="^Kitty$" space=3
-yabai -m rule --add app="^DingTalk$" space=4
+yabai -m rule --add label=dingtalk app="^DingTalk$" space=4
 # yabai -m rule --add app="^Spotify$" space=6
 # yabai -m rule --add app="^Discord$" space=7 grid=1:1:0:0:1:1 manage=off
 # yabai -m rule --add app="^Steam$" space=7 manage=off
-yabai -m rule --add app="^System Preferences$" manage=off
-yabai -m rule --add app="^CopyQ$" manage=off grid="50:50:20:15:9:20"
-yabai -m rule --add app="^choose$" manage=off
-yabai -m rule --add title="^floating-term" manage=off grid=4:4:1:1:2:2
-yabai -m rule --add title="^fullscreen-term" manage=off grid=4:4:0:0:4:4
-yabai -m rule --add title="^chooser" manage=off grid="50:50:15:10:20:35" opacity=0.9
+yabai -m rule --add label=prefs app="^System Preferences$" manage=off
+yabai -m rule --add label=copyq app="^CopyQ$" manage=off grid="50:50:20:15:9:20"
+yabai -m rule --add label=choose app="^choose$" manage=off
+yabai -m rule --add label=floater title="^floating-term" manage=off grid=4:4:1:1:2:2
+yabai -m rule --add label=maximized title="^fullscreen-term" manage=off grid=4:4:0:0:4:4
+yabai -m rule --add label=chooser title="^chooser" manage=off grid="50:50:15:10:20:35" opacity=0.9
 
 # signals
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
