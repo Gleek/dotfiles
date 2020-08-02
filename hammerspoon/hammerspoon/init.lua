@@ -14,7 +14,7 @@ hs.hotkey.bind({"cmd", "shift", "ctrl"}, "g", function()
       console.clearConsole()
 end)
 
-local binder = require('bind-apps');
+local binder = require('binder');
 binder.bindKeys()
 
 
@@ -35,4 +35,4 @@ binder.bindKeys()
 --       end
 --    end
 -- ):start()
-hs.alert.show("Config loaded")
+hs.notify.show("Config loaded", "", "")
