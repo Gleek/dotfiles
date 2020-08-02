@@ -59,13 +59,12 @@ local bindings = {
    {{"alt"}, "k", "open -a KeePassXC"},
    {{"alt"}, "v", exec.copyq .. "show"},
    {{"alt"}, "\\", exec.kitty .. "--single-instance gotop"},
-   {{"alt"}, "d",  "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh"},
+   {{"alt"}, "d",  "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh", true},
 }
 local getKeyName = function(binding)
    return table.concat(binding[1], "-").. "-" .. binding[2]
 end
 
-os.execute('export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh')
 module.bindKeys = function()
    for _, binding in pairs(bindings) do
       log.i(getKeyName(binding), binding[3])
@@ -73,8 +72,13 @@ module.bindKeys = function()
          binding[1],
          binding[2],
          function()
-            -- hs.alert.show(binding[3])
-            os.execute(binding[3] .. " &")
+            -- if requires full environment
+            if binding[4] then
+               hs.alert.show(binding[3])
+               hs.execute(binding[3], true)
+               return
+            end
+            os.execute(binding[3])
       end)
    end
 end
