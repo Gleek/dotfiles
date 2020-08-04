@@ -16,9 +16,6 @@ module.cons.direction = {
    stacknext=6,
 }
 
-local execute = function(command)
-   os.execute(command)
-end
 
 -- Move focus direction=>left, write, up, down
 module.fns.moveFocus = function(direction)
@@ -34,7 +31,7 @@ module.fns.moveFocus = function(direction)
    if (not directions[direction]) then
       return
    end
-   execute(directions[direction])
+   require('util').exec(directions[direction])
 end
 
 module.fns.swapWindows = function(direction)
@@ -50,7 +47,7 @@ module.fns.swapWindows = function(direction)
    if (not directions[direction]) then
       return
    end
-   execute(directions[direction])
+   require('util').exec(directions[direction])
 end
 
 
@@ -64,7 +61,7 @@ module.fns.moveWindows = function(direction)
    if (not directions[direction]) then
       return
    end
-   execute(directions[direction])
+   require('util').exec(directions[direction])
 end
 
 
@@ -81,12 +78,12 @@ module.fns.shiftFloatingWindows = function(direction, length)
    if (not directions[direction]) then
       return
    end
-   execute(directions[direction])
+   require('util').exec(directions[direction])
 end
 
 
 module.fns.moveToWorkspace = function(workspaceId)
-   execute(yabaiExec .. "-m space --focus " .. workspaceId)
+   require('util').exec(yabaiExec .. "-m space --focus " .. workspaceId)
 end
 
 return module

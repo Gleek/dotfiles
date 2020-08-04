@@ -34,6 +34,8 @@ module.bindFns = function()
 end
 
 module.bindShell = function()
+   local util = require('util')
+
    -- {keySeq}, key, command, fullEnvironment?
    local bindings = {
       -----------
@@ -80,24 +82,20 @@ module.bindShell = function()
       ------------------
       -- Applications --
       ------------------
-      {"alt-shift", "f", exec.kitty .. "--single-instance -d ~ ranger"},
-      {"alt", "return", exec.kitty .. "--single-instance -d ~ -T floating-term screen -dR session"},
+      {"alt-shift", "f", exec.kitty .. "--single-instance -d ~ ranger", true},
+      {"alt", "return", exec.kitty .. "--single-instance -d ~ -T floating-term screen -dR session", true},
       {"shift-alt", "t", exec.kitty .. "--single-instance -d ~"},
       {"alt", "k", "open -a KeePassXC"},
       {"alt", "v", exec.copyq .. "show"},
-      {"alt", "\\", exec.kitty .. "--single-instance gotop"},
-      {"alt", "d",  "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh 2>&1 > /dev/null &", true},
+      {"alt", "\\", exec.kitty .. "--single-instance gotop", true},
+      {"alt", "d",  "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh", true},
    }
    for _, binding in pairs(bindings) do
       hotkey.bind(
          binding[1],
          binding[2],
          function()
-            if (binding[4]) then
-               hs.execute(binding[3], true)
-               return
-            end
-            os.execute(binding[3] .. " &")
+            util.exec(binding[3], not not binding[4])
       end)
    end
 end
