@@ -3,7 +3,7 @@ local yabaiExec = "/usr/local/bin/yabai "
 module.init = function()
 end
 
-
+-- local log = hs.logger.new('yabai', 'debug');
 module.cons = {};
 module.fns = {};
 module.cons.direction = {
@@ -17,7 +17,7 @@ module.cons.direction = {
 }
 
 
--- Move focus direction=>left, write, up, down
+-- Move focus direction=> takes in module.cons.direction as param
 module.fns.moveFocus = function(direction)
    local directions = {
       [module.cons.direction.left]      = yabaiExec .. "-m window --focus west",
@@ -28,9 +28,7 @@ module.fns.moveFocus = function(direction)
       [module.cons.direction.stackprev] = yabaiExec .. "-m window --focus stack.prev",
       [module.cons.direction.stacknext] = yabaiExec .. "-m window --focus stack.next",
    }
-   if (not directions[direction]) then
-      return
-   end
+   if (not directions[direction]) then return end
    require('util').exec(directions[direction])
 end
 
@@ -44,9 +42,7 @@ module.fns.swapWindows = function(direction)
       [module.cons.direction.stackprev] = yabaiExec .. "-m window --swap stack.prev",
       [module.cons.direction.stacknext] = yabaiExec .. "-m window --swap stack.next"
    }
-   if (not directions[direction]) then
-      return
-   end
+   if (not directions[direction]) then return end
    require('util').exec(directions[direction])
 end
 
@@ -58,32 +54,71 @@ module.fns.moveWindows = function(direction)
       [module.cons.direction.up]        = yabaiExec .. "-m window --warp north",
       [module.cons.direction.down]      = yabaiExec .. "-m window --warp south",
    }
-   if (not directions[direction]) then
-      return
-   end
+   if (not directions[direction]) then return end
    require('util').exec(directions[direction])
 end
 
 
 module.fns.shiftFloatingWindows = function(direction, length)
-   if length <= 0 then
-      length = 100
-   end
+   length = length or 100
    local directions = {
       [module.cons.direction.left]      = yabaiExec .. "-m window --move rel:-"..length..":0",
-      [module.cons.direction.right]     = yabaiExec .. "-m window --move rel:"..length.."0",
+      [module.cons.direction.right]     = yabaiExec .. "-m window --move rel:"..length..":0",
       [module.cons.direction.up]        = yabaiExec .. "-m window --move rel:0:-"..length,
       [module.cons.direction.down]      = yabaiExec .. "-m window --move rel:0:"..length,
    }
-   if (not directions[direction]) then
-      return
-   end
+   if (not directions[direction]) then return end
    require('util').exec(directions[direction])
 end
 
 
 module.fns.moveToWorkspace = function(workspaceId)
    require('util').exec(yabaiExec .. "-m space --focus " .. workspaceId)
+end
+
+module.fns.moveWindowToWorkspace = function(workspaceId)
+   workspaceId = workspaceId or "recent"
+   require('util').exec(yabaiExec .. "-m window --space " .. workspaceId)
+end
+
+module.fns.toggleGaps = function()
+   require('util').exec(yabaiExec .. "-m space --toggle padding")
+   require('util').exec(yabaiExec .. "-m space --toggle gap")
+end
+
+module.fns.rotateWindows = function()
+   require('util').exec(yabaiExec .. "-m space --rotate 90")
+end
+
+module.fns.mirrorX = function()
+   require('util').exec(yabaiExec .. "-m space --mirror x-axis")
+end
+
+module.fns.mirrorY = function()
+   require('util').exec(yabaiExec .. "-m space --mirror y-axis")
+end
+
+module.fns.zoom = function()
+   require('util').exec(yabaiExec .. "-m window --toggle zoom-fullscreen")
+end
+
+module.fns.fullScreen = function()
+   require('util').exec(yabaiExec .. "-m window --toggle native-fullscreen")
+end
+
+module.fns.togglePopup = function()
+   require('util').exec(yabaiExec .. "-m window --toggle float")
+   require('util').exec(yabaiExec .. "-m window --grid 4:4:1:1:2:2")
+end
+
+module.fns.toggleSplit = function()
+   require('util').exec(yabaiExec .. "-m window --toggle split")
+end
+
+module.fns.toggleLayout = function()
+   local layout = hs.json.decode((hs.execute(yabaiExec .. "-m query --spaces --space")))["type"]
+   layout = layout== "bsp" and "float" or "bsp"
+   require('util').exec(yabaiExec .. "-m space --layout " .. layout)
 end
 
 return module

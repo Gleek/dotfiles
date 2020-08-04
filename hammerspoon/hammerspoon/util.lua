@@ -1,9 +1,9 @@
 local module = {}
 module.exec = function(cmd, env)
    cmd = cmd .. " &"
-   -- using /bin/bash instead of os.getenv("SHELL") as my default
-   -- shell zsh is loaded with stuff that slows things down, which I
-   -- don't need just to get a proper environment
-   return os.execute(env and "/bin/bash"..[[ -l -i -c "]]..cmd..[["]] or cmd)
+   local shell = env == "full" and os.getenv("SHELL") or "/bin/bash"
+   -- /bin/bash with no settings is much faster than zsh with all the plugins
+   -- hs.logger.new("", "debug").i("Running ".. cmd, env)
+   return os.execute(env and shell..[[ -l -i -c "]]..cmd..[["]] or cmd)
 end
 return module
