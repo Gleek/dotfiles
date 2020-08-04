@@ -11,7 +11,11 @@ local exec = {
 
 module.bindFns = function()
    local yabai = require('yabai')
+   local console = require('hs.console')
    local bindings = {
+      {"cmd-shift-ctrl", "r", function() hs.reload() end},
+      {"cmd-shift-ctrl", "g", function() console.clearConsole() end},
+
       {"alt", "tab", function() yabai.fns.moveFocus(yabai.cons.direction.recent) end},
       {"alt", "b",   function() yabai.fns.moveFocus(yabai.cons.direction.left) end},
       {"alt", "n",   function() yabai.fns.moveFocus(yabai.cons.direction.down) end},

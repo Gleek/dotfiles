@@ -1,19 +1,4 @@
 -- defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
-
-
--- console.clearConsole()
-console = require('hs.console')
-local log = hs.logger.new('hhtwm', 'debug');
-
-hs.hotkey.bind({"cmd", "shift", "ctrl"}, "r", function()
-      hs.reload()
-end)
-
-
-hs.hotkey.bind({"cmd", "shift", "ctrl"}, "g", function()
-      console.clearConsole()
-end)
-
 local binder = require('binder');
 binder.bindKeys()
 
