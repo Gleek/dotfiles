@@ -103,9 +103,69 @@ module.bindShell = function()
    end
 end
 
+
+module.bindModal = function()
+   local y = require('yabai')
+   local ann = require('hhann')
+   -- modifier, key, mode-name, table of bindings, [init fn], [exit fn]
+   local modes = {
+      ------------------
+      -- Yabai resize --
+      ------------------
+      {"alt", "r", "Resize" ,
+       {
+          {'', 'left', function() y.fns.resize(y.cons.direction.left, -20) end},
+          {'', 'right', function() y.fns.resize(y.cons.direction.right, 20) end},
+          {'', 'up', function() y.fns.resize(y.cons.direction.up, -20) end},
+          {'', 'down', function() y.fns.resize(y.cons.direction.down, 20) end},
+          {'shift', 'left', function() y.fns.resize(y.cons.direction.right, -20) end},
+          {'shift', 'right', function() y.fns.resize(y.cons.direction.left, 20) end},
+          {'shift', 'up', function() y.fns.resize(y.cons.direction.down, -20) end},
+          {'shift', 'down', function() y.fns.resize(y.cons.direction.up, 20) end},
+       }
+      },
+
+      -------------------------
+      -- Annotations (HHANN) --
+      -------------------------
+      {"shift-alt", "a", "Annotation",
+       {
+          {'', 'c', function() ann.clear() end},
+          {'', 't', function() ann.toggleAnnotating() end}
+       },
+       function() ann.start() ann.startAnnotating() end,
+       function() ann.stopAnnotating() ann.hide() end
+      }
+   }
+
+
+   for _, mode in pairs(modes) do
+      local hk = hotkey.modal.new(mode[1], mode[2])
+      local modalAlert = {}
+      function hk:entered()
+         if mode[5] then (mode[5])() end
+         modalAlert = hs.alert.show(
+            mode[3] .. " mode",
+            {textSize=12, radius=0, textFont="Fira Mono", atScreenEdge=2},
+            hs.screen.mainScreen(),
+            "inf"
+         )
+      end
+      function hk:exited()
+         if mode[6] then (mode[6])() end
+         hs.alert.closeSpecific(modalAlert)
+      end
+      hk:bind('', 'escape', function() hk:exit() end)
+      for _, binding in pairs(mode[4]) do
+         hk:bind(binding[1], binding[2], binding[3])
+      end
+   end
+end
+
 module.bindKeys = function()
    module.bindFns()
    module.bindShell()
+   module.bindModal()
 end
 
 

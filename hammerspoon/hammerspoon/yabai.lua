@@ -71,6 +71,18 @@ module.fns.shiftFloatingWindows = function(direction, length)
    require('util').exec(directions[direction])
 end
 
+module.fns.resize = function(direction, length, abs)
+   abs = abs and "abs" or 0
+   local directions = {
+      [module.cons.direction.left]      = yabaiExec .. "-m window --resize left:"..length..":"..abs,
+      [module.cons.direction.right]     = yabaiExec .. "-m window --resize right:"..length..":"..abs,
+      [module.cons.direction.up]        = yabaiExec .. "-m window --resize top:"..abs..":"..length,
+      [module.cons.direction.down]      = yabaiExec .. "-m window --resize bottom:"..abs..":".. length,
+   }
+   if (not directions[direction]) then return end
+   require('util').exec(directions[direction])
+end
+
 
 module.fns.moveToWorkspace = function(workspaceId)
    require('util').exec(yabaiExec .. "-m space --focus " .. workspaceId)

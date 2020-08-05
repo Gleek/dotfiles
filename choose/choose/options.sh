@@ -51,6 +51,10 @@ TILES[$index]="Sleep"
 COMMANDS[$index]="osascript -e 'tell app \"System Events\" to sleep'"
 index+=1
 
+TILES[$index]="Restart Yabai"
+COMMANDS[$index]='brew services restart yabai'
+index+=1
+
 # TILES[$index]="Kill - SIGTERM"
 # COMMANDS[$index]="~/.config/choose/kill.sh 15"
 # index+=1
@@ -62,12 +66,6 @@ index+=1
 # TILES[$index]="TERM"
 # COMMANDS[$index]="~/.config/choose/term.sh"
 # index+=1
-
-
-# TILES[$index]="Apps"
-# COMMANDS[$index]="~/.config/choose/applaunch.sh"
-# index+=1
-
 
 function gen_entries {
     for a in $(seq 1 $(( ${#TILES[@]} )))
