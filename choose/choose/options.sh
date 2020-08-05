@@ -37,8 +37,18 @@ TILES[$index]="Launch app"
 COMMANDS[$index]="~/.config/choose/applaunch.sh"
 index+=1
 
-TILES[$index]="Power options"
-COMMANDS[$index]="~/.config/choose/power.sh"
+TILES[$index]="Shutdown"
+COMMANDS[$index]="osascript -e 'tell app \"System Events\" to shut down'"
+index+=1
+
+
+TILES[$index]="Restart"
+COMMANDS[$index]="osascript -e 'tell app \"System Events\" to restart'"
+index+=1
+
+
+TILES[$index]="Sleep"
+COMMANDS[$index]="osascript -e 'tell app \"System Events\" to sleep'"
 index+=1
 
 # TILES[$index]="Kill - SIGTERM"
