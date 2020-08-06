@@ -14,6 +14,7 @@ module.bindFns = function()
    local console = require('hs.console')
    local bindings = {
       {"cmd-shift-ctrl", "r", function() hs.reload() end},
+      -- {"cmd-shift-ctrl", "i", function() hs.redshift.toggleInvert() end},
       {"cmd-shift-ctrl", "g", function() console.clearConsole() end},
 
       -----------
@@ -131,7 +132,10 @@ module.bindModal = function()
       {"shift-alt", "a", "Annotation",
        {
           {'', 'c', function() ann.clear() end},
-          {'', 't', function() ann.toggleAnnotating() end}
+          {'', 't', function() ann.toggleAnnotating() end},
+          {'', 'r', function() ann.changeToRed() end},
+          {'', 'g', function() ann.changeToGreen() end},
+          {'', 'b', function() ann.changeToBlue() end},
        },
        function() ann.start() ann.startAnnotating() end,
        function() ann.stopAnnotating() ann.hide() end

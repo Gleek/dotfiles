@@ -1,4 +1,6 @@
 -- defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+require("hs.ipc")
+hs.ipc.cliInstall()
 local binder = require('binder');
 binder.bindKeys()
 

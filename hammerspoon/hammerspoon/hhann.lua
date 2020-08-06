@@ -16,6 +16,7 @@ local activeScreen = function()
    end
 end
 
+
 local updateMode = function()
    local mouse = hs.mouse.getRelativePosition()
    local x, y  = mouse.x, mouse.y
@@ -28,6 +29,39 @@ local updateMode = function()
       action    = 'fill',
       fillColor = color,
    }
+end
+
+module.changeToGreen = function()
+   COLOR["red"] = 0
+   COLOR["green"] = 200
+   COLOR["blue"] = 0
+
+   COLOR_DIM["red"] = 0
+   COLOR_DIM["green"] = 200
+   COLOR_DIM["blue"] = 0
+   updateMode()
+end
+
+module.changeToRed = function()
+   COLOR["red"] = 200
+   COLOR["green"] = 0
+   COLOR["blue"] = 0
+
+   COLOR_DIM["red"] = 200
+   COLOR_DIM["green"] = 0
+   COLOR_DIM["blue"] = 0
+   updateMode()
+end
+
+module.changeToBlue = function()
+   COLOR["red"] = 0
+   COLOR["green"] = 0
+   COLOR["blue"] = 200
+
+   COLOR_DIM["red"] = 0
+   COLOR_DIM["green"] = 0
+   COLOR_DIM["blue"] = 200
+   updateMode()
 end
 
 module.startAnnotating = function()
