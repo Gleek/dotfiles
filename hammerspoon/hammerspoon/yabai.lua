@@ -55,10 +55,10 @@ module.increaseSizeRight = function() module.resize(module.cons.direction.right,
 module.increaseSizeUp = function() module.resize(module.cons.direction.up, -20) end
 module.increaseSizeDown = function() module.resize(module.cons.direction.down, 20) end
 
-module.decreaseSizeLeft = function() module.resize(module.cons.direction.left, -20) end
-module.decreaseSizeRight = function() module.resize(module.cons.direction.right, 20) end
-module.decreaseSizeUp = function() module.resize(module.cons.direction.up, -20) end
-module.decreaseSizeDown = function() module.resize(module.cons.direction.down, 20) end
+module.decreaseSizeLeft = function() module.resize(module.cons.direction.right, -20) end
+module.decreaseSizeRight = function() module.resize(module.cons.direction.left, 20) end
+module.decreaseSizeUp = function() module.resize(module.cons.direction.down, -20) end
+module.decreaseSizeDown = function() module.resize(module.cons.direction.up, 20) end
 
 -- Move focus direction=> takes in module.cons.direction as param
 module.moveFocus = function(direction)
@@ -122,7 +122,7 @@ module.resize = function(direction, length, abs)
       [module.cons.direction.up]        = yabaiExec .. "-m window --resize top:"..abs..":"..length,
       [module.cons.direction.down]      = yabaiExec .. "-m window --resize bottom:"..abs..":".. length,
    }
-   if (not ydirections[direction]) then return end
+   if (not directions[direction]) then return end
    require('util').exec(directions[direction])
 end
 

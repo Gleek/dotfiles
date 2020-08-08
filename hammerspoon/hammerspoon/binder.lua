@@ -66,9 +66,7 @@ module.bindFns = function()
 
       {"alt",        "a", function() y.toggleGaps() end},
       {"alt",        "e", function() y.toggleSplit() end},
-      {"alt",        "r", function() y.rotateWindows() end},
-      {"alt",        "y", function() y.mirrorY() end},
-      {"alt",        "x", function() y.mirrorX() end},
+      {"alt-shift",  "r", function() y.rotateWindows() end},
       {"alt",        "z", function() y.zoom() end},
       {"shift-alt",  "z", function() y.fullScreen() end},
       {"alt",        "t", function() y.togglePopup() end},
@@ -118,14 +116,14 @@ module.bindModal = function()
       ------------------
       {"alt", "r", "Resize" ,
        {
-          {'', 'left', function() y.fns.resize(y.cons.direction.left, -20) end},
-          {'', 'right', function() y.fns.resize(y.cons.direction.right, 20) end},
-          {'', 'up', function() y.fns.resize(y.cons.direction.up, -20) end},
-          {'', 'down', function() y.fns.resize(y.cons.direction.down, 20) end},
-          {'shift', 'left', function() y.fns.resize(y.cons.direction.right, -20) end},
-          {'shift', 'right', function() y.fns.resize(y.cons.direction.left, 20) end},
-          {'shift', 'up', function() y.fns.resize(y.cons.direction.down, -20) end},
-          {'shift', 'down', function() y.fns.resize(y.cons.direction.up, 20) end},
+          {'', 'left', function() y.increaseSizeLeft() end},
+          {'', 'right', function() y.increaseSizeRight() end},
+          {'', 'up', function() y.increaseSizeUp() end},
+          {'', 'down', function() y.increaseSizeDown() end},
+          {'shift', 'left', function() y.decreaseSizeLeft() end},
+          {'shift', 'right', function() y.decreaseSizeRight() end},
+          {'shift', 'up', function() y.decreaseSizeUp() end},
+          {'shift', 'down', function() y.decreaseSizeDown() end},
        }
       },
 
