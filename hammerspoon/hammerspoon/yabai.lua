@@ -1,11 +1,8 @@
 local module = {}
 local yabaiExec = "/usr/local/bin/yabai "
-module.init = function()
-end
 
 -- local log = hs.logger.new('yabai', 'debug');
 module.cons = {};
-module.fns = {};
 module.cons.direction = {
    left=0,
    right=1,
@@ -17,8 +14,54 @@ module.cons.direction = {
 }
 
 
+module.interactives = {
+   "moveFocusLeft", "moveFocusRight", "moveFocusUp", "moveFocusDown",
+   "swapWindowsLeft", "swapWindowsRight", "swapWindowsUp",
+   "swapWindowsDown", "toggleGaps", "rotateWindows", "mirrorX",
+   "mirrorY", "zoom", "fullScreen", "togglePopup", "toggleSplit",
+   "toggleLayout"
+}
+
+
+module.moveFocusLeft = function() module.moveFocus(module.cons.direction.left) end
+module.moveFocusRight = function() module.moveFocus(module.cons.direction.right) end
+module.moveFocusUp = function() module.moveFocus(module.cons.direction.up) end
+module.moveFocusDown = function() module.moveFocus(module.cons.direction.down) end
+module.moveFocusRecent = function() module.moveFocus(module.cons.direction.recent) end
+module.moveFocusStackPrev = function() module.moveFocus(module.cons.direction.stackprev) end
+module.moveFocusStackNext = function() module.moveFocus(module.cons.direction.stacknext) end
+
+module.swapWindowsLeft = function() module.swapWindows(module.cons.direction.left) end
+module.swapWindowsRight = function() module.swapWindows(module.cons.direction.right) end
+module.swapWindowsUp = function() module.swapWindows(module.cons.direction.up) end
+module.swapWindowsDown = function() module.swapWindows(module.cons.direction.down) end
+module.swapWindowsRecent = function() module.swapWindows(module.cons.direction.recent) end
+module.swapWindowsStackPrev = function() module.swapWindows(module.cons.direction.stackprev) end
+module.swapWindowsStackNext = function() module.swapWindows(module.cons.direction.stacknext) end
+
+
+module.moveWindowsLeft = function() module.moveWindows(module.cons.direction.left) end
+module.moveWindowsRight = function() module.moveWindows(module.cons.direction.right) end
+module.moveWindowsUp = function() module.moveWindows(module.cons.direction.up) end
+module.moveWindowsDown = function() module.moveWindows(module.cons.direction.down) end
+
+module.shiftFloatingLeft = function() module.shiftFloatingWindows(module.cons.direction.left) end
+module.shiftFloatingRight = function() module.shiftFloatingWindows(module.cons.direction.right) end
+module.shiftFloatingUp = function() module.shiftFloatingWindows(module.cons.direction.up) end
+module.shiftFloatingDown = function() module.shiftFloatingWindows(module.cons.direction.down) end
+
+module.increaseSizeLeft = function() module.resize(module.cons.direction.left, -20) end
+module.increaseSizeRight = function() module.resize(module.cons.direction.right, 20) end
+module.increaseSizeUp = function() module.resize(module.cons.direction.up, -20) end
+module.increaseSizeDown = function() module.resize(module.cons.direction.down, 20) end
+
+module.decreaseSizeLeft = function() module.resize(module.cons.direction.left, -20) end
+module.decreaseSizeRight = function() module.resize(module.cons.direction.right, 20) end
+module.decreaseSizeUp = function() module.resize(module.cons.direction.up, -20) end
+module.decreaseSizeDown = function() module.resize(module.cons.direction.down, 20) end
+
 -- Move focus direction=> takes in module.cons.direction as param
-module.fns.moveFocus = function(direction)
+module.moveFocus = function(direction)
    local directions = {
       [module.cons.direction.left]      = yabaiExec .. "-m window --focus west",
       [module.cons.direction.right]     = yabaiExec .. "-m window --focus east",
@@ -32,7 +75,7 @@ module.fns.moveFocus = function(direction)
    require('util').exec(directions[direction])
 end
 
-module.fns.swapWindows = function(direction)
+module.swapWindows = function(direction)
    local directions = {
       [module.cons.direction.left]      = yabaiExec .. "-m window --swap west",
       [module.cons.direction.right]     = yabaiExec .. "-m window --swap east",
@@ -47,7 +90,7 @@ module.fns.swapWindows = function(direction)
 end
 
 
-module.fns.moveWindows = function(direction)
+module.moveWindows = function(direction)
    local directions = {
       [module.cons.direction.left]      = yabaiExec .. "-m window --warp west",
       [module.cons.direction.right]     = yabaiExec .. "-m window --warp east",
@@ -59,7 +102,7 @@ module.fns.moveWindows = function(direction)
 end
 
 
-module.fns.shiftFloatingWindows = function(direction, length)
+module.shiftFloatingWindows = function(direction, length)
    length = length or 100
    local directions = {
       [module.cons.direction.left]      = yabaiExec .. "-m window --move rel:-"..length..":0",
@@ -71,7 +114,7 @@ module.fns.shiftFloatingWindows = function(direction, length)
    require('util').exec(directions[direction])
 end
 
-module.fns.resize = function(direction, length, abs)
+module.resize = function(direction, length, abs)
    abs = abs and "abs" or 0
    local directions = {
       [module.cons.direction.left]      = yabaiExec .. "-m window --resize left:"..length..":"..abs,
@@ -79,55 +122,55 @@ module.fns.resize = function(direction, length, abs)
       [module.cons.direction.up]        = yabaiExec .. "-m window --resize top:"..abs..":"..length,
       [module.cons.direction.down]      = yabaiExec .. "-m window --resize bottom:"..abs..":".. length,
    }
-   if (not directions[direction]) then return end
+   if (not ydirections[direction]) then return end
    require('util').exec(directions[direction])
 end
 
 
-module.fns.moveToWorkspace = function(workspaceId)
+module.moveToWorkspace = function(workspaceId)
    require('util').exec(yabaiExec .. "-m space --focus " .. workspaceId)
 end
 
-module.fns.moveWindowToWorkspace = function(workspaceId)
+module.moveWindowToWorkspace = function(workspaceId)
    workspaceId = workspaceId or "recent"
    require('util').exec(yabaiExec .. "-m window --space " .. workspaceId)
 end
 
-module.fns.toggleGaps = function()
+module.toggleGaps = function()
    require('util').exec(yabaiExec .. "-m space --toggle padding")
    require('util').exec(yabaiExec .. "-m space --toggle gap")
 end
 
-module.fns.rotateWindows = function()
+module.rotateWindows = function()
    require('util').exec(yabaiExec .. "-m space --rotate 90")
 end
 
-module.fns.mirrorX = function()
+module.mirrorX = function()
    require('util').exec(yabaiExec .. "-m space --mirror x-axis")
 end
 
-module.fns.mirrorY = function()
+module.mirrorY = function()
    require('util').exec(yabaiExec .. "-m space --mirror y-axis")
 end
 
-module.fns.zoom = function()
+module.zoom = function()
    require('util').exec(yabaiExec .. "-m window --toggle zoom-fullscreen")
 end
 
-module.fns.fullScreen = function()
+module.fullScreen = function()
    require('util').exec(yabaiExec .. "-m window --toggle native-fullscreen")
 end
 
-module.fns.togglePopup = function()
+module.togglePopup = function()
    require('util').exec(yabaiExec .. "-m window --toggle float")
    require('util').exec(yabaiExec .. "-m window --grid 4:4:1:1:2:2")
 end
 
-module.fns.toggleSplit = function()
+module.toggleSplit = function()
    require('util').exec(yabaiExec .. "-m window --toggle split")
 end
 
-module.fns.toggleLayout = function()
+module.toggleLayout = function()
    local layout = hs.json.decode((hs.execute(yabaiExec .. "-m query --spaces --space")))["type"]
    layout = layout== "bsp" and "float" or "bsp"
    require('util').exec(yabaiExec .. "-m space --layout " .. layout)
