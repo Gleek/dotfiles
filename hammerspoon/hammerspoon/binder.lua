@@ -138,8 +138,8 @@ module.bindModal = function()
           {'', 'g', function() ann.changeToGreen() end},
           {'', 'b', function() ann.changeToBlue() end},
        },
-       function() ann.start() ann.startAnnotating() end,
-       function() ann.stopAnnotating() ann.hide() end
+       function() ann.start() end,
+       function() ann.exit() end
       }
    }
 

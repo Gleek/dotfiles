@@ -174,6 +174,13 @@ end
 
 module.start = function()
    setup()
+   module.startAnnotating()
+end
+
+
+module.exit = function()
+   module.hide()
+   module.stopAnnotating()
 end
 
 module.clear = function()
