@@ -11,7 +11,7 @@ local exec = {
 
 module.bindFns = function()
    local y = require('yabai')
-   local f = require('fns')
+   -- local f = require('fns')
    local console = require('hs.console')
    local bindings = {
       {"cmd-shift-ctrl", "r", function() hs.reload() end},
@@ -172,6 +172,7 @@ module.bindKeys = function()
    module.bindFns()
    module.bindShell()
    module.bindModal()
+   require('holdtoquit').bind()
 end
 
 
