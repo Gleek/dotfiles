@@ -72,7 +72,7 @@ module.bindFns = function()
       {"alt",        "t", function() y.togglePopup() end},
       {"alt",        "s", function() y.toggleLayout() end},
 
-      {"alt", "x", function() f.choose() end},
+      -- {"alt", "x", function() f.choose() end},
    }
    for _, binding in pairs(bindings) do
       hotkey.bind(binding[1], binding[2], binding[3])
@@ -94,6 +94,7 @@ module.bindShell = function()
       {"alt", "v", exec.copyq .. "show"},
       {"alt", "\\", exec.kitty .. "--single-instance gotop", true},
       {"alt", "d",  "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh", true},
+      {"alt", "x",  "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/hammerspoon.sh", true},
    }
    for _, binding in pairs(bindings) do
       hotkey.bind(

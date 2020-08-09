@@ -55,6 +55,14 @@ TILES[$index]="Restart Yabai"
 COMMANDS[$index]='brew services restart yabai'
 index+=1
 
+TILES[$index]="Hammerspoon console"
+COMMANDS[$index]='kitty --single-instance hs'
+index+=1
+
+TILES[$index]="Hammerspoon functions"
+COMMANDS[$index]='~/.config/choose/hammerspoon.sh'
+index+=1
+
 # TILES[$index]="Kill - SIGTERM"
 # COMMANDS[$index]="~/.config/choose/kill.sh 15"
 # index+=1

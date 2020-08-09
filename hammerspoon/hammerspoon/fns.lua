@@ -24,7 +24,6 @@ local populatePairs = function()
       end
       for key, value in pairs(required) do
          if type(value) == "function" then
-            log.i(useInteractive, key, interactives[key])
             if (useInteractive and interactives[key]) or not useInteractive then
                mapping[import..".".. key] = value
             end
@@ -35,7 +34,7 @@ end
 
 local runCommand = function(selectedTable)
    chooser:hide()
-   if selectedTable then  mapping[selectedTable.text]() end
+   if selectedTable then  module.exec(selectedTable.text) end
 end
 
 local commandList = function()
@@ -52,6 +51,18 @@ module.choose = function()
    chooser = hs.chooser.new(runCommand)
    chooser:choices(commandList)
    chooser:show()
+end
+
+
+module.dump = function()
+   populatePairs()
+   for key, _ in pairs(mapping) do
+      print(key)
+   end
+end
+
+module.exec = function(selected)
+   if selected then  mapping[selected]() end
 end
 
 
