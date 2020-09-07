@@ -78,7 +78,7 @@ index+=1
 function gen_entries {
     for a in $(seq 1 $(( ${#TILES[@]} )))
     do
-        echo $a ${TILES[a]}
+        echo -e "$a\\t${TILES[a]}"
     done
 }
 

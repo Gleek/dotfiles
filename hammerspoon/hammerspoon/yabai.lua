@@ -16,11 +16,12 @@ module.cons.direction = {
 
 module.interactives = {
    "moveFocusLeft", "moveFocusRight", "moveFocusUp", "moveFocusDown",
+   "moveFocusRecent", "moveFocusStackPrev", "moveFocusStackNext",
    "swapWindowsLeft", "swapWindowsRight", "swapWindowsUp",
    "swapWindowsDown", "toggleGaps", "rotateWindows", "mirrorX",
    "mirrorY", "zoom", "fullScreen", "togglePopup", "toggleSplit",
-   "toggleLayout"
-}
+   "toggleLayout", "toggleSticky"
+ }
 
 
 module.moveFocusLeft = function() module.moveFocus(module.cons.direction.left) end
@@ -170,10 +171,16 @@ module.toggleSplit = function()
    require('util').exec(yabaiExec .. "-m window --toggle split")
 end
 
+module.toggleSticky = function()
+   require('util').exec(yabaiExec .. "-m window --toggle sticky")
+end
+
 module.toggleLayout = function()
    local layout = hs.json.decode((hs.execute(yabaiExec .. "-m query --spaces --space")))["type"]
    layout = layout== "bsp" and "float" or "bsp"
    require('util').exec(yabaiExec .. "-m space --layout " .. layout)
 end
+
+
 
 return module

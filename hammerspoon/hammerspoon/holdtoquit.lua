@@ -1,7 +1,7 @@
 local module = {}
 
 local DURATION = 1
-local apps = {"Firefox", "kitty"}
+local apps = {"Firefox", "kitty", "Emacs"}
 local timer = {}
 local onKeyDown = function()
    local app = hs.application.frontmostApplication()

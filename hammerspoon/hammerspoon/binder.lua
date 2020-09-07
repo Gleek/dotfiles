@@ -6,6 +6,7 @@ local exec = {
    kitty = "/usr/local/bin/kitty ",
    yabai = "/usr/local/bin/yabai ",
    copyq = "/usr/local/bin/copyq ",
+   mpv = "/usr/local/bin/mpv ",
 }
 
 
@@ -93,6 +94,7 @@ module.bindShell = function()
       {"alt", "k", "open -a KeePassXC"},
       {"alt", "v", exec.copyq .. "show"},
       {"alt", "\\", exec.kitty .. "--single-instance gotop", true},
+      {"alt-shift", "m", exec.mpv .. "$(pbpaste)"},
       {"alt", "d",  "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh", true},
       {"alt", "x",  "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/hammerspoon.sh", true},
    }
@@ -152,7 +154,7 @@ module.bindModal = function()
          if mode[5] then (mode[5])() end
          modalAlert = hs.alert.show(
             mode[3] .. " mode",
-            {textSize=12, radius=0, textFont="Fira Mono", atScreenEdge=2},
+            {textSize=13, radius=0, textFont="Fira Code", atScreenEdge=2},
             hs.screen.mainScreen(),
             "inf"
          )

@@ -3,7 +3,7 @@ SCROLL=$1 || true
 extraparams=()
 if [[ $INTERFACE == "GUI" ]]
 then
-    choose -s 25 -w 30 -f "Fira Mono" -c a9a9a9
+    choose -s 25 -w 30 -f "Fira Code" -c a9a9a9
 else
     # fzy -l 50
     scrollparam="--no-hscroll"

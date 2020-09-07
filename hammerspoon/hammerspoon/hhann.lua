@@ -2,6 +2,8 @@
 local cache  = {}
 local module = { cache = cache }
 
+module.interactives = {"start", "exit", "changeToGreen", "changeToRed", "changeToBlue", "clear"}
+
 local COLOR     = { red = 200, green = 0, blue = 0, alpha = 0.8 }
 local COLOR_DIM = { red = 200, green = 0, blue = 0, alpha = 0.4 }
 
@@ -154,9 +156,11 @@ local setup = function()
       cache.tapMove:stop()
    end
 
-   cache.tapMove = hs.eventtap.new({
+   cache.tapMove = hs.eventtap.new(
+      {
          hs.eventtap.event.types.mouseMoved
-                                   }, function(e)
+      },
+      function(e)
          local frame         = cache.canvas:frame()
          local eventLocation = e:location()
          local x             = eventLocation['x'] - frame.x
@@ -165,7 +169,8 @@ local setup = function()
          if cache.canvas[1] then
             cache.canvas[1].center = { x = x + 6, y = y - 6 }
          end
-   end)
+      end
+   )
 
    cache.tapMove:start()
 
