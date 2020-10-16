@@ -20,10 +20,14 @@ I recently switched to macos from linux. Many of the applications work on both t
 
 Linux(X) specific applications should work but won't be updated.
 
-### Adding a new config
-```
-mkdir -p $1/$1 && mv ~/.config/$1/* $1/$1/. && rm -r ~/.config/$1 && stow -t ~/.config $1
-```
+I also try to stay inside Emacs as much as possible, which means I'll stop using all the other applications completely and everything will be replaced by emacs sooner or later
 
-### TODO
-- [ ] Move emacs here
+Some replacements that have already happened or are in process and won't be tweaked further
+- Ranger: Dired
+- i3: exwm (sadly not on macos)
+- mpd: bongo
+- kitty: vterm/eshell
+- newsboat: elfeed
+
+### Adding a new config
+`./generator.sh directory`
