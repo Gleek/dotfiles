@@ -1,0 +1,3 @@
+[submodule "emacs"]
+	path = emacs/emacs
+	url = https://github.com/gleek/.emacs
