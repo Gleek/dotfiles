@@ -30,7 +30,14 @@ module.killCurrentApp = function()
 end
 
 module.bind = function()
-   hs.hotkey.bind("cmd", "q", function() onKeyDown() end, function() onKeyUp() end)
+   local bind = hs.hotkey.bind("cmd", "q", function() onKeyDown() end, function() onKeyUp() end)
+   local wf=hs.window.filter
+   local ignoreWF = wf.new("Emacs")
+   ignoreWF:subscribe(wf.windowFocused, function()
+                        bind:disable()
+   end):subscribe(wf.windowUnfocused, function()
+                     bind:enable()
+                 end)
 end
 
 
