@@ -153,6 +153,8 @@ export VISUAL='emacsclient'
 export BUP_DIR=/mnt/data/MegaSync/backup
 export DISPLAY=":0"
 
+export SCREENRC=~/.config/screen/screenrc
+
 autoload -Uz compinit
 compinit
 # Completion for kitty
