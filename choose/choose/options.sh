@@ -56,7 +56,7 @@ COMMANDS[$index]='brew services restart yabai'
 index+=1
 
 TILES[$index]="Hammerspoon console"
-COMMANDS[$index]='kitty --single-instance hs'
+COMMANDS[$index]='kitty --single-instance /usr/local/bin/hs'
 index+=1
 
 TILES[$index]="Hammerspoon functions"

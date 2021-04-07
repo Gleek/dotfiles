@@ -7,6 +7,7 @@ local exec = {
    yabai = "/usr/local/bin/yabai ",
    copyq = "/usr/local/bin/copyq ",
    mpv = "/usr/local/bin/mpv ",
+   emacsclient="/usr/local/bin/emacsclient ",
 }
 
 
@@ -22,11 +23,11 @@ module.bindFns = function()
       -----------
       -- Yabai --
       -----------
-      {"alt", "tab", function() y.moveFocusRecent() end},
-      {"alt", "b",   function() y.moveFocusLeft() end},
-      {"alt", "n",   function() y.moveFocusDown() end},
-      {"alt", "p",   function() y.moveFocusUp() end},
-      {"alt", "f",   function() y.moveFocusRight() end},
+      -- {"alt", "tab", function() y.moveFocusRecent() end},
+      -- {"alt", "b",   function() y.moveFocusLeft() end},
+      -- {"alt", "n",   function() y.moveFocusDown() end},
+      -- {"alt", "p",   function() y.moveFocusUp() end},
+      -- {"alt", "f",   function() y.moveFocusRight() end},
 
       {"cmd-alt", "left",  function() y.swapWindowsLeft() end},
       {"cmd-alt", "right", function() y.swapWindowsRight() end},
@@ -88,15 +89,16 @@ module.bindShell = function()
       ------------------
       -- Applications --
       ------------------
-      {"alt-shift", "f", exec.kitty .. "--single-instance -d ~ ranger", true},
-      {"alt", "return", exec.kitty .. "--single-instance -d ~ -T floating-term screen -dR session", "full"},
-      {"shift-alt", "t", exec.kitty .. "--single-instance -d ~"},
-      {"alt", "k", "open -a KeePassXC"},
-      {"alt", "v", exec.copyq .. "show"},
-      {"alt", "\\", exec.kitty .. "--single-instance gotop", true},
-      {"alt-shift", "m", exec.mpv .. "$(pbpaste)"},
-      {"alt", "d",  "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh", true},
-      {"alt", "x",  "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/hammerspoon.sh", true},
+      {"alt-shift", "f"     , exec.kitty .. "--single-instance -d ~ ranger"                                                       , true},
+      {"alt"      , "return", exec.kitty .. "--single-instance -d ~ -T floating-term screen -dR session"                          , "full"},
+      {"shift-alt", "t"     , exec.kitty .. "--single-instance -d ~"},
+      {"alt"      , "k"     , "open -a KeePassXC"},
+      {"alt"      , "v"     , exec.copyq .. "show"},
+      {"alt-shift", "e"     , exec.emacsclient .. "--eval \"(emacs-everywhere)\""},
+      {"alt"      , "\\"    , exec.kitty .. "--single-instance gotop"                                                             , true},
+      {"alt-shift", "m"     , exec.mpv .. "$(pbpaste)"},
+      {"alt"      , "d"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh"     , true},
+      {"alt"      , "x"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/hammerspoon.sh" , true},
    }
    for _, binding in pairs(bindings) do
       hotkey.bind(
@@ -140,6 +142,8 @@ module.bindModal = function()
           {'', 'r', function() ann.changeToRed() end},
           {'', 'g', function() ann.changeToGreen() end},
           {'', 'b', function() ann.changeToBlue() end},
+          {'', 'up', function() ann.increaseStrokeWidth() end},
+          {'', 'down', function() ann.decreaseStrokeWidth() end},
        },
        function() ann.start() end,
        function() ann.exit() end
@@ -174,7 +178,8 @@ module.bindKeys = function()
    module.bindFns()
    module.bindShell()
    module.bindModal()
-   require('holdtoquit').bind()
+   -- Figure out a way to disable for emacs
+   -- require('holdtoquit').bind()
 end
 
 

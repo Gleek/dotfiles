@@ -7,6 +7,8 @@ module.interactives = {"start", "exit", "changeToGreen", "changeToRed", "changeT
 local COLOR     = { red = 200, green = 0, blue = 0, alpha = 0.8 }
 local COLOR_DIM = { red = 200, green = 0, blue = 0, alpha = 0.4 }
 
+local STROKE_WIDTH = 10
+
 -- grabs screen with active window, unless it's Finder's desktop - then defaults to mouse position
 local activeScreen = function()
    local activeWindow = hs.window.focusedWindow()
@@ -66,6 +68,21 @@ module.changeToBlue = function()
    updateMode()
 end
 
+module.increaseStrokeWidth = function()
+   if STROKE_WIDTH >= 100 then
+      return
+   end
+   STROKE_WIDTH = STROKE_WIDTH + 2
+end
+
+module.decreaseStrokeWidth = function()
+   if STROKE_WIDTH <= 2 then
+      return
+   end
+   STROKE_WIDTH = STROKE_WIDTH - 2
+end
+
+
 module.startAnnotating = function()
    local upsertCurrentDrawing = function(x, y)
       table.insert(cache.currentSegments, { x = x, y = y })
@@ -76,7 +93,7 @@ module.startAnnotating = function()
          coordinates = cache.currentSegments,
          action      = 'stroke',
          strokeColor = COLOR,
-         strokeWidth = 2,
+         strokeWidth = STROKE_WIDTH,
       }
    end
 

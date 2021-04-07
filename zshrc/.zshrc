@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git screen)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -157,11 +157,8 @@ export SCREENRC=~/.config/screen/screenrc
 
 autoload -Uz compinit
 compinit
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
-eval "$(pyenv init -)"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-HISTSIZE=10000000
+# Completion for kitty kitty + complete setup zsh | source /dev/stdin
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh HISTSIZE=10000000
 SAVEHIST=10000000
 
 # tabtab source for electron-forge package
