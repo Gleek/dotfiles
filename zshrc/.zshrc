@@ -126,6 +126,7 @@ alias startfzpoll="unison default $zpath ssh://zdev/$remoteworkpath/application/
 alias startfzrpoll="unison default $zpath ssh://zdevr/$remoteworkpath/application/ -repeat 2 -watch=false  -logfile /tmp/unison.log"
 alias zremotesync="unison -batch -times $zpath ssh://zdev/$remoteworkpath/application/ -logfile /tmp/unison.log"
 alias zrremotesync="unison -batch -times $zpath ssh://zdevr/$remoteworkpath/application/ -logfile /tmp/unison.log"
+alias zrsync="while : ;do rsync -zPa --exclude=.git/ --exclude=vendor/ $zpath/ ndev://$remoteworkpath/application/; sleep 2; done;"
 
 alias startnzpoll="unison default $zpath ssh://ndev/$remoteworkpath/application/ -repeat 2 -watch=false  -logfile /tmp/unison.log"
 alias startfnpoll="unison default $zpath ssh://ndev/$remoteworkpath/application/ -repeat 2 -watch=false  -prefer $zpath -logfile /tmp/unison.log"

@@ -20,7 +20,7 @@ module.interactives = {
    "swapWindowsLeft", "swapWindowsRight", "swapWindowsUp",
    "swapWindowsDown", "toggleGaps", "rotateWindows", "mirrorX",
    "mirrorY", "zoom", "fullScreen", "togglePopup", "toggleSplit",
-   "toggleLayout", "toggleSticky"
+   "toggleLayout", "toggleSticky", "toggleTopMost"
  }
 
 
@@ -179,6 +179,10 @@ module.toggleLayout = function()
    local layout = hs.json.decode((hs.execute(yabaiExec .. "-m query --spaces --space")))["type"]
    layout = layout== "bsp" and "float" or "bsp"
    require('util').exec(yabaiExec .. "-m space --layout " .. layout)
+end
+
+module.toggleTopMost = function()
+   require('util').exec(yabaiExec .. "-m window --toggle topmost")
 end
 
 
