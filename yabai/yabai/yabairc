@@ -28,7 +28,7 @@ yabai -m config window_gap                   06
 
 # window rules
 yabai -m rule --add label=firefox app="^Firefox$" space=1
-yabai -m rule --add label=emacs app="^Emacs$" space=2
+# yabai -m rule --add label=emacs app="^Emacs$" space=2
 # yabai -m rule --add app="^Kitty$" space=3
 yabai -m rule --add label=dingtalk app="^DingTalk$" space=4
 # yabai -m rule --add app="^Spotify$" space=6
