@@ -2,4 +2,5 @@ ranger/ranger/history
 ranger/ranger/tagged
 ranger/ranger/bookmarks
 ranger/ranger/tagged
+newsboat/newsboat/urls
 .DS_Store

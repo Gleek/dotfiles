@@ -126,7 +126,10 @@ alias startfzpoll="unison default $zpath ssh://zdev/$remoteworkpath/application/
 alias startfzrpoll="unison default $zpath ssh://zdevr/$remoteworkpath/application/ -repeat 2 -watch=false  -logfile /tmp/unison.log"
 alias zremotesync="unison -batch -times $zpath ssh://zdev/$remoteworkpath/application/ -logfile /tmp/unison.log"
 alias zrremotesync="unison -batch -times $zpath ssh://zdevr/$remoteworkpath/application/ -logfile /tmp/unison.log"
-alias zrsync="while : ;do rsync -zPa --exclude=.git/ --exclude=vendor/ $zpath/ ndev://$remoteworkpath/application/; sleep 2; done;"
+# alias zrsync="while : ;do rsync -zPa --exclude=.git/ --exclude=vendor/ $zpath/ ndev://$remoteworkpath/application/; sleep 2; done;"
+alias zrsync="rsync -zPa --exclude=.git/ --exclude=vendor/ --exclude=rendered/ --exclude=build/ --delete $zpath/ ndev://$remoteworkpath/application/"
+alias zrevsync="rsync -zPa --exclude=.git/ --exclude=vendor/ --exclude=build/ ndev://$remoteworkpath/application/ $zpath/"
+alias zsync="zrsync;fswatch --exclude='^flycheck_.*php$' --exclude '.git/' --exclude='^\.#.*' -o $zpath | while read f; do zrsync;done"
 
 alias startnzpoll="unison default $zpath ssh://ndev/$remoteworkpath/application/ -repeat 2 -watch=false  -logfile /tmp/unison.log"
 alias startfnpoll="unison default $zpath ssh://ndev/$remoteworkpath/application/ -repeat 2 -watch=false  -prefer $zpath -logfile /tmp/unison.log"
