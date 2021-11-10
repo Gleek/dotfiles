@@ -22,9 +22,17 @@ yabai -m config left_padding                 12
 yabai -m config right_padding                12
 yabai -m config window_gap                   06
 
+# space labels
+yabai -m space 1 --label web
+yabai -m space 2 --label emacs
+yabai -m space 3 --label term
+yabai -m space 4 --label comm
+
+
 # specific space settings
 # yabai -m config --space 2 layout             stack
 # yabai -m config --space 7 layout             float
+
 
 # window rules
 yabai -m rule --add label=firefox app="^Firefox$" space=1

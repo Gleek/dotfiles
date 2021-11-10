@@ -137,6 +137,10 @@ module.moveWindowToWorkspace = function(workspaceId)
    require('util').exec(yabaiExec .. "-m window --space " .. workspaceId)
 end
 
+module.moveSpaceToDisplay = function(displayId)
+   require('util').exec(yabaiExec .. "-m space --display " .. displayId)
+end
+
 module.toggleGaps = function()
    require('util').exec(yabaiExec .. "-m space --toggle padding")
    require('util').exec(yabaiExec .. "-m space --toggle gap")
