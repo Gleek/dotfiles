@@ -17,7 +17,7 @@ c = c  # type: ConfigContainer # noqa: F821 pylint: disable=E0602,C0103
 from os.path import expanduser
 home = expanduser("~")
 realbase = home + '/.qutebrowser/'
-
+themes = ['base16-onedark.config.py', 'base16-one-light.config.py']
 
 ESC_BIND = 'clear-keychain ;; search ;; fullscreen --leave'
 
@@ -86,6 +86,7 @@ c.bindings.commands['normal'] = {
     '<meta-7>': 'tab-focus 7',
     '<meta-8>': 'tab-focus 8',
     '<meta-9>': 'tab-focus -1',
+    '<alt-u>': 'reload',
 
     # frames
     '<ctrl-x><5><0>': 'close',
@@ -130,9 +131,11 @@ c.bindings.commands['normal'] = {
     '0': 'fake-key 0',
 
     # misc
-    # '<ctrl-c><v>': 'spawn --userscript ~/.bin/open_in_mpv.sh',
+    '<ctrl-c>am': 'hint links spawn mpv --ytdl-raw-options=ignore-config=,sub-lang="en",write-sub=,write-auto-sub= {hint-url}',
     '<ctrl-c><e>': ':jseval --file ' + realbase + 'js/eww.js',
     '<ctrl-c><c>': ':jseval --file ' + realbase +'js/capture.js',
+    '<ctrl-c>tl': 'config-source ' + realbase + 'themes/' + themes[1],
+    '<ctrl-c>td': 'config-source ' + realbase + 'themes/' + themes[0],
 
     # modes
     '<ctrl-meta-escape>': 'mode-enter passthrough',
