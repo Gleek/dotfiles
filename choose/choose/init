@@ -3,14 +3,14 @@
 # Pass interface as GUI to use choose or TUI to choose fzf
 if [[ $INTERFACE == "GUI" ]]
 then
-    exec $1
+    exec $*
 else
-    kitty --single-instance \
+    /usr/local/bin/kitty --single-instance \
           --instance-group="chooser" \
           -o font_size=20 \
           -o window_padding_width=10 \
           -o adjust_line_height=10 \
           -d=~ \
           -T "chooser" \
-          $1
+          $*
 fi

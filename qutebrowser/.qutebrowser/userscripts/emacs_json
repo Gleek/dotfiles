@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eu
+
+. /Users/umar/.zshenv
+TEMP_FILE="$(mktemp --suffix .json)"
+jq . "$QUTE_TEXT" >"$TEMP_FILE"
+emacsclient "$TEMP_FILE"

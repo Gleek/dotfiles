@@ -27,6 +27,12 @@ yabai -m space 1 --label web
 yabai -m space 2 --label emacs
 yabai -m space 3 --label term
 yabai -m space 4 --label comm
+yabai -m space 5 --label zoom
+yabai -m space 6 --label e1
+yabai -m space 7 --label e2
+yabai -m space 8 --label e3
+yabai -m space 9 --label e4
+yabai -m space 10 --label e5
 
 
 # specific space settings
@@ -35,10 +41,10 @@ yabai -m space 4 --label comm
 
 
 # window rules
-yabai -m rule --add label=firefox app="^Firefox$" space=1
+yabai -m rule --add label=firefox app="^Firefox$" space=web
 # yabai -m rule --add label=emacs app="^Emacs$" space=2
 # yabai -m rule --add app="^Kitty$" space=3
-yabai -m rule --add label=dingtalk app="^DingTalk$" space=4
+# yabai -m rule --add label=dingtalk app="^DingTalk$" space=4
 # yabai -m rule --add app="^Spotify$" space=6
 # yabai -m rule --add app="^Discord$" space=7 grid=1:1:0:0:1:1 manage=off
 # yabai -m rule --add app="^Steam$" space=7 manage=off

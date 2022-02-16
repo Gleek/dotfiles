@@ -3,4 +3,14 @@ ranger/ranger/tagged
 ranger/ranger/bookmarks
 ranger/ranger/tagged
 newsboat/newsboat/urls
+nohup.out
 .DS_Store
+/qutebrowser/.qutebrowser/*quickmarks
+/qutebrowser/.qutebrowser/profiles/*/cache
+/qutebrowser/.qutebrowser/profiles/*/data
+/qutebrowser/.qutebrowser/profiles/*/download
+/qutebrowser/.qutebrowser/profiles/*/config/bookmarks
+/qutebrowser/.qutebrowser/profiles/*/config/quickmarks
+/qutebrowser/.qutebrowser/profiles/work/config/search-engines.py
+/qutebrowser/.qutebrowser/bookmarks
+/qutebrowser/**/autoconfig.yml
