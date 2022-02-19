@@ -36,7 +36,7 @@ c.bindings.commands['normal'] = {
     # Commands
     '<meta-x>': 'set-cmd-text :',
     '<meta-shift-;>': 'set-cmd-text :spawn --userscript ',
-    '<ctrl-x><ctrl-c>': 'quit',
+    '<ctrl-x><ctrl-c>': 'quit --save',
 
     # searching
     '<ctrl-s>': 'set-cmd-text /',
@@ -45,7 +45,7 @@ c.bindings.commands['normal'] = {
     # hinting
     '<f>': 'hint all',
     '<ctrl-u><f>': 'hint all hover',
-    '<shift-f>': 'hint all tab-bg',
+    # '<shift-f>': 'hint all tab-bg',
     '<ctrl-u><shift-e>': 'hint all tab-fg',
     '<w><l>': 'hint all yank-primary',
     '<w><w>': 'yank url',
@@ -131,7 +131,8 @@ c.bindings.commands['normal'] = {
     '0': 'fake-key 0',
 
     # misc
-    '<ctrl-c>am': 'hint links spawn mpv --ytdl-raw-options=ignore-config=,sub-lang="en",write-sub=,write-auto-sub= {hint-url}',
+    '<ctrl-c>am': 'hint links spawn mpv  {hint-url}',
+    '<ctrl-c>aM': 'spawn mpv {url}',
     '<ctrl-c><e>': ':jseval --file ' + realbase + 'js/eww.js',
     '<ctrl-c><c>': ':jseval --file ' + realbase +'js/capture.js',
     '<ctrl-c>tl': 'config-source ' + realbase + 'themes/' + themes[1],
