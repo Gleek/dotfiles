@@ -133,8 +133,9 @@ c.bindings.commands['normal'] = {
     # misc
     '<ctrl-c>am': 'hint links spawn mpv  {hint-url}',
     '<ctrl-c>aM': 'spawn mpv {url}',
-    '<ctrl-c><e>': ':jseval --file ' + realbase + 'js/eww.js',
-    '<ctrl-c><c>': ':jseval --file ' + realbase +'js/capture.js',
+    # '<ctrl-c><e>': ':jseval --file ' + realbase + 'js/eww.js',
+    '<ctrl-c><e>': 'spawn --userscript eww',
+    '<ctrl-c><c>': 'spawn --userscript capture',
     '<ctrl-c>tl': 'config-source ' + realbase + 'themes/' + themes[1],
     '<ctrl-c>td': 'config-source ' + realbase + 'themes/' + themes[0],
 

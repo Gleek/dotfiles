@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# url=$(echo $QUTE_URL|base64)
+# emacsclient -n "org-protocol://eww?eurl=$url"
+url=$QUTE_URL
+emacsclient --no-wait --eval "(eww \"$url\")"
