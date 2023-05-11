@@ -63,6 +63,10 @@ c.bindings.commands['normal'] = {
     '<ctrl-u><m>': 'quickmark-save',
     'M': 'open qute://bookmarks',
 
+    # zoom
+    '+': 'zoom-in',
+    '-': 'zoom-out',
+    '=': 'zoom',
 
     # tabs
     '<ctrl-tab>': 'tab-next',
