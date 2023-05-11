@@ -62,7 +62,8 @@ module.bindFns = function()
       {"shift-alt", "0", function() y.moveWindowToWorkspace("e5") end},
 
       {"ctrl-alt", "down", function() y.moveSpaceToDisplay(1) end},
-      {"ctrl-alt", "up", function() y.moveSpaceToDisplay(2) end},
+      {"ctrl-alt", "left", function() y.moveSpaceToDisplay(2) end},
+      {"ctrl-alt", "up", function() y.moveSpaceToDisplay(3) end},
 
       {"shift-alt", "left" , function() y.shiftFloatingLeft() end},
       {"shift-alt", "down" , function() y.shiftFloatingDown() end},
@@ -96,13 +97,14 @@ module.bindShell = function()
       {"alt"      , "return", exec.kitty .. "--single-instance -d ~ -T floating-term screen -dR session"                          , "full"},
       {"shift-alt", "t"     , exec.kitty .. "--single-instance -d ~"},
       {"alt"      , "k"     , "open -a KeePassXC"},
+      {"alt"      , "l"     , "pmset displaysleepnow", true},
       {"alt"      , "v"     , exec.copyq .. "show"},
       {"alt-shift", "e"     , exec.emacsclient .. "--eval \"(emacs-everywhere)\""},
       {"alt"      , "\\"    , exec.kitty .. "--single-instance gotop"                                                             , true},
       {"alt-shift", "m"     , exec.mpv .. "$(pbpaste)"},
       {"alt"      , "d"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh"     , true},
       {"alt"      , "x"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/hammerspoon.sh" , true},
-      {"alt"      , "b"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/qute.sh"        , true},
+      -- {"alt"      , "b"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/qute.sh"        , true},
    }
    for _, binding in pairs(bindings) do
       hotkey.bind(

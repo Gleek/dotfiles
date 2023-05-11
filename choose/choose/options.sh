@@ -37,22 +37,27 @@ TILES[$index]="Launch app"
 COMMANDS[$index]="~/.config/choose/applaunch.sh"
 index+=1
 
-TILES[$index]="Shutdown"
-COMMANDS[$index]="osascript -e 'tell app \"System Events\" to shut down'"
-index+=1
+# TILES[$index]="Shutdown"
+# COMMANDS[$index]="osascript -e 'tell app \"System Events\" to shut down'"
+# index+=1
 
 
-TILES[$index]="Restart"
-COMMANDS[$index]="osascript -e 'tell app \"System Events\" to restart'"
-index+=1
+# TILES[$index]="Restart"
+# COMMANDS[$index]="osascript -e 'tell app \"System Events\" to restart'"
+# index+=1
 
 
 TILES[$index]="Sleep"
-COMMANDS[$index]="osascript -e 'tell app \"System Events\" to sleep'"
+COMMANDS[$index]="pmset displaysleepnow"
 index+=1
 
 TILES[$index]="Restart Yabai"
-COMMANDS[$index]='brew services restart yabai'
+COMMANDS[$index]='brew servicses restart yabai'
+index+=1
+
+
+TILES[$index]="Yabai Load SA"
+COMMANDS[$index]='sudo yabai --load-sa'
 index+=1
 
 TILES[$index]="Hammerspoon console"
@@ -63,9 +68,9 @@ TILES[$index]="Hammerspoon functions"
 COMMANDS[$index]='~/.config/choose/hammerspoon.sh'
 index+=1
 
-TILES[$index]="Launch Emacs"
-COMMANDS[$index]='open -a Emacs'
-index+=1
+# TILES[$index]="Launch Emacs"
+# COMMANDS[$index]='open -a Emacs'
+# index+=1
 
 # TILES[$index]="Kill - SIGTERM"
 # COMMANDS[$index]="~/.config/choose/kill.sh 15"

@@ -50,6 +50,8 @@ yabai -m rule --add label=firefox app="^Firefox$" space=web
 # yabai -m rule --add app="^Steam$" space=7 manage=off
 yabai -m rule --add label=prefs app="^System Preferences$" manage=off
 yabai -m rule --add label=stats app="^Stats$" manage=off
+# apple calendar auto complete popups
+yabai -m rule --add label=calendar app="^Calendar$" title!="^Calendar$" manage=off
 yabai -m rule --add label=copyq app="^CopyQ$" manage=off grid="50:50:20:15:9:20"
 yabai -m rule --add label=choose app="^choose$" manage=off
 yabai -m rule --add label=floater title="^floating-term" manage=off grid=4:4:1:1:2:2
