@@ -68,6 +68,11 @@ TILES[$index]="Hammerspoon functions"
 COMMANDS[$index]='~/.config/choose/hammerspoon.sh'
 index+=1
 
+
+TILES[$index]="Interrupt Emacs"
+COMMANDS[$index]='killall -SIGUSR2 Emacs'
+index+=1
+
 # TILES[$index]="Launch Emacs"
 # COMMANDS[$index]='open -a Emacs'
 # index+=1

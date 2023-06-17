@@ -140,7 +140,7 @@ end
 module.moveSpaceToDisplay = function(displayId)
    require('util').exec(yabaiExec .. "-m space --display " .. displayId)
    -- Yabai requires a reload post display adjustment sometimes.
-   require('util').exec("sudo " .. yabaiExec .. "--load-sa")
+   require('util').exec("sleep 2 && sudo " .. yabaiExec .. "--load-sa")
 end
 
 module.toggleGaps = function()
