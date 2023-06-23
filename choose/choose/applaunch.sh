@@ -4,8 +4,6 @@ app=$(fd '.*\.app$' \
          "/Applications" \
          "/System/Applications" \
          "$HOME/Applications" \
-         "/Developer/Applications" \
-         "/Applications/Xcode.app/Contents/Applications" \
          "/System/Library/PreferencePanes" \
          "/Library/PreferencePanes" \
          "$HOME/Library/PreferencePanes" \
@@ -13,7 +11,7 @@ app=$(fd '.*\.app$' \
          "/System/Library/CoreServices/" \
          "/usr/local/Cellar" \
          "/Library/Scripts" \
-         "$HOME/Library/Scripts" 2> /dev/null|stdbuf -oL rev|stdbuf -oL cut -d/ -f1|stdbuf -oL cut -d. -f2-|stdbuf -oL rev|~/.config/choose/choose)
+         "$HOME/Library/Scripts" 2> /dev/null|stdbuf -oL rev|stdbuf -oL cut -d/ -f2|stdbuf -oL cut -d. -f2-|stdbuf -oL rev|~/.config/choose/choose)
 [ "$app" != "" ] || exit
 osascript -e "display notification \"Running $app.\" with title \"App\""
 open -a "$app"
