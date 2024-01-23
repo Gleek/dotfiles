@@ -5,7 +5,7 @@
 --
 
 local module = {}
-local imports = {"yabai", "hhann"}
+local imports = {"yabai", "hhann", "screen", "wallpaper"}
 
 local log = hs.logger.new('', 'debug');
 local mapping = {}

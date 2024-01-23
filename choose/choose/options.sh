@@ -52,7 +52,7 @@ COMMANDS[$index]="pmset displaysleepnow"
 index+=1
 
 TILES[$index]="Restart Yabai"
-COMMANDS[$index]='brew servicses restart yabai'
+COMMANDS[$index]='yabai --restart-service'
 index+=1
 
 
@@ -61,7 +61,7 @@ COMMANDS[$index]='sudo yabai --load-sa'
 index+=1
 
 TILES[$index]="Hammerspoon console"
-COMMANDS[$index]='kitty --single-instance /usr/local/bin/hs'
+COMMANDS[$index]='kitty --single-instance /opt/homebrew/bin/hs'
 index+=1
 
 TILES[$index]="Hammerspoon functions"

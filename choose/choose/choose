@@ -3,9 +3,9 @@ SCROLL=$1 || true
 extraparams=()
 if [[ $INTERFACE == "GUI" ]]
 then
-    /usr/local/bin/choose -s 25 -w 30 -f "Fira Code" -c a9a9a9
+    /opt/homebrew/bin/choose -s 25 -w 30 -f "Fira Code" -c a9a9a9
 else
     # fzy -l 50
     scrollparam="--no-hscroll"
-    /usr/local/bin/fzf --reverse --bind change:top ${SCROLL:+"$scrollparam"}
+    /opt/homebrew/bin/fzf --reverse --bind change:top ${SCROLL:+"$scrollparam"}
 fi

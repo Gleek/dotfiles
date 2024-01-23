@@ -3,11 +3,11 @@ local module = {}
 local log = hs.logger.new('binder', 'debug');
 local hotkey = require('hs.hotkey')
 local exec = {
-   kitty = "/usr/local/bin/kitty ",
-   yabai = "/usr/local/bin/yabai ",
-   copyq = "/usr/local/bin/copyq ",
-   mpv = "/usr/local/bin/mpv ",
-   emacsclient="/usr/local/bin/emacsclient ",
+   kitty = "/opt/homebrew/bin/kitty ",
+   yabai = "/opt/homebrew/bin/yabai ",
+   copyq = "/opt/homebrew/bin/copyq ",
+   mpv = "/opt/homebrew/bin/mpv ",
+   emacsclient="/opt/homebrew/bin/emacsclient ",
 }
 
 
@@ -73,10 +73,13 @@ module.bindFns = function()
       {"alt",        "a", function() y.toggleGaps() end},
       {"alt",        "e", function() y.toggleSplit() end},
       {"alt-shift",  "r", function() y.rotateWindows() end},
-      {"alt",        "z", function() y.zoom() end},
+      -- {"alt",        "z", function() y.zoom() end},
       {"shift-alt",  "z", function() y.fullScreen() end},
       {"alt",        "t", function() y.togglePopup() end},
       {"alt",        "s", function() y.toggleLayout() end},
+
+
+      {"alt",        "l", function() hs.caffeinate.lockScreen() hs.caffeinate.systemSleep() end},
 
       -- {"alt", "x", function() f.choose() end},
    }
@@ -97,7 +100,6 @@ module.bindShell = function()
       {"alt"      , "return", exec.kitty .. "--single-instance -d ~ -T floating-term screen -dR session"                          , "full"},
       {"shift-alt", "t"     , exec.kitty .. "--single-instance -d ~"},
       {"alt"      , "k"     , "open -a KeePassXC"},
-      {"alt"      , "l"     , "pmset displaysleepnow", true},
       {"alt"      , "v"     , exec.copyq .. "show"},
       {"alt-shift", "e"     , exec.emacsclient .. "--eval \"(emacs-everywhere)\""},
       {"alt"      , "\\"    , exec.kitty .. "--single-instance gotop"                                                             , true},

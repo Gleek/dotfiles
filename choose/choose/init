@@ -5,7 +5,7 @@ if [[ $INTERFACE == "GUI" ]]
 then
     exec $*
 else
-    /usr/local/bin/kitty --single-instance \
+    /opt/homebrew/bin/kitty --single-instance \
           --instance-group="chooser" \
           -o font_size=20 \
           -o window_padding_width=10 \

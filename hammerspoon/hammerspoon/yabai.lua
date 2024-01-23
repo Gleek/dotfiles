@@ -1,5 +1,5 @@
 local module = {}
-local yabaiExec = "/usr/local/bin/yabai "
+local yabaiExec = "/opt/homebrew/bin/yabai "
 
 -- local log = hs.logger.new('yabai', 'debug');
 module.cons = {};
