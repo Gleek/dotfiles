@@ -136,6 +136,9 @@ alias startfnpoll="unison default $zpath ssh://ndev/$remoteworkpath/application/
 
 alias icat="kitty +kitten icat"
 
+alias docker=podman
+alias docker-compose=podman-compose
+
 # alias k='~/.keyboard.sh'
 # alias refreshwifi='sudo dhclient -v -r && sudo dhclient -v wlp3s0'
 alias cf='cd $(dirname $(fzf))'
