@@ -20,7 +20,7 @@ module.interactives = {
    "swapWindowsLeft", "swapWindowsRight", "swapWindowsUp",
    "swapWindowsDown", "toggleGaps", "rotateWindows", "mirrorX",
    "mirrorY", "zoom", "fullScreen", "togglePopup", "toggleSplit",
-   "toggleLayout", "toggleSticky", "toggleTopMost"
+   "toggleLayout", "toggleSticky", "toggleTopMost", "resetSpaces"
  }
 
 
@@ -189,6 +189,12 @@ end
 
 module.toggleTopMost = function()
    require('util').exec(yabaiExec .. "-m window --toggle topmost")
+end
+
+module.resetSpaces = function()
+   for i = 1, 10 do
+         require('util').exec(yabaiExec .. "-m space ".. i .. " --label s" .. i)
+   end
 end
 
 

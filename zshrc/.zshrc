@@ -145,6 +145,8 @@ alias cf='cd $(dirname $(fzf))'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export GOPATH="$HOME/Development/gocode"
 export GOPRIVATE=$(echo "tvguho.pbz/Mbzngb/*"|tr '[A-Za-z]' '[N-ZA-Mn-za-m]')
+export GOOS=darwin
+export GOARCH=arm64
 # export PATH="$PATH:$GOPATH/bin:/home/umar/.yarn/bin"
 # export PATH="$PATH:$GOPATH/bin:$HOME/.cargo/bin"
 alias lip='ifconfig|grep en0 -A 10| grep '\''inet '\''|awk '\''{print $2}'\'''
