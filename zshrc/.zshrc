@@ -127,7 +127,7 @@ alias startfzrpoll="unison default $zpath ssh://zdevr/$remoteworkpath/applicatio
 alias zremotesync="unison -batch -times $zpath ssh://zdev/$remoteworkpath/application/ -logfile /tmp/unison.log"
 alias zrremotesync="unison -batch -times $zpath ssh://zdevr/$remoteworkpath/application/ -logfile /tmp/unison.log"
 # alias zrsync="while : ;do rsync -zPa --exclude=.git/ --exclude=vendor/ $zpath/ ndev://$remoteworkpath/application/; sleep 2; done;"
-alias zrsync="rsync -zPa --exclude=.git/ --exclude=vendor/ --exclude=rendered/ --exclude=build/ --delete $zpath/ ndev://$remoteworkpath/application/"
+alias zrsync="rsync -zPa --exclude=.git/ --exclude=vendor/ --exclude='*rendered/' --exclude=build/ --delete $zpath/ ndev://$remoteworkpath/application/"
 alias zrevsync="rsync -zPa --exclude=.git/ --exclude=vendor/ --exclude=build/ ndev://$remoteworkpath/application/ $zpath/"
 alias zsync="zrsync;fswatch --exclude='^flycheck_.*php$' --exclude '.git/' --exclude='^\.#.*' -o $zpath | while read f; do zrsync;done"
 
