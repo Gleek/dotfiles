@@ -100,7 +100,7 @@ module.bindShell = function()
       {"alt"      , "return", exec.kitty .. "--single-instance -d ~ -T floating-term screen -dR session"                          , "full"},
       {"shift-alt", "t"     , exec.kitty .. "--single-instance -d ~"},
       {"alt"      , "k"     , "open -a KeePassXC"},
-      {"alt"      , "v"     , exec.copyq .. "show"},
+      {"alt"      , "v"     , "open -a Maccy"},
       {"alt-shift", "e"     , exec.emacsclient .. "--eval \"(emacs-everywhere)\""},
       {"alt"      , "\\"    , exec.kitty .. "--single-instance gotop"                                                             , true},
       {"alt-shift", "m"     , exec.mpv .. "$(pbpaste)"},
