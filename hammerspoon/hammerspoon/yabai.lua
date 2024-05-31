@@ -20,7 +20,8 @@ module.interactives = {
    "swapWindowsLeft", "swapWindowsRight", "swapWindowsUp",
    "swapWindowsDown", "toggleGaps", "rotateWindows", "mirrorX",
    "mirrorY", "zoom", "fullScreen", "togglePopup", "toggleSplit",
-   "toggleLayout", "toggleSticky", "toggleTopMost", "resetSpaces"
+   "toggleLayout", "toggleSticky", "toggleTopMost", "resetSpaces",
+   "numberCurrentSpace"
  }
 
 
@@ -194,6 +195,18 @@ end
 module.resetSpaces = function()
    for i = 1, 10 do
          require('util').exec(yabaiExec .. "-m space ".. i .. " --label s" .. i)
+   end
+end
+
+module.numberCurrentSpace = function()
+   local currentSpace = hs.json.decode((hs.execute(yabaiExec .. "-m query --spaces --space")))["index"]
+   local button, text = hs.dialog.textPrompt(
+      'Number Current Space',
+      '',
+      tostring(currentSpace)
+   )
+   if button == "OK" then
+      require('util').exec(yabaiExec .. "-m space --label s" .. text)
    end
 end
 
