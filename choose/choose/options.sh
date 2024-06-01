@@ -73,6 +73,11 @@ TILES[$index]="Interrupt Emacs"
 COMMANDS[$index]='killall -SIGUSR2 Emacs'
 index+=1
 
+
+TILES[$index]="Open Zoom"
+COMMANDS[$index]='~/.config/choose/zoom.sh'
+index+=1
+
 # TILES[$index]="Launch Emacs"
 # COMMANDS[$index]='open -a Emacs'
 # index+=1

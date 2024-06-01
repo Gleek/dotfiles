@@ -12,5 +12,5 @@ else
           -o adjust_line_height=10 \
           -d=~ \
           -T "chooser" \
-          $*
+          "$*"
 fi

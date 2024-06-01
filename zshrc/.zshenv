@@ -23,3 +23,6 @@ $GOPATH/bin:\
 /Applications/dragger.app/Contents/MacOS:\
 /Library/TeX/Distributions/Programs/texbin:\
 "
+if [ -f "$HOME/.zsh_secrets" ]; then
+    source "$HOME/.zsh_secrets"
+fi
