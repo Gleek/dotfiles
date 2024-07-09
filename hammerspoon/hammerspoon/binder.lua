@@ -73,7 +73,7 @@ module.bindFns = function()
       {"alt",        "a", function() y.toggleGaps() end},
       {"alt",        "e", function() y.toggleSplit() end},
       {"alt-shift",  "r", function() y.rotateWindows() end},
-      -- {"alt",        "z", function() y.zoom() end},
+      {"alt",        "z", function() y.zoom() end},
       {"shift-alt",  "z", function() y.fullScreen() end},
       {"alt",        "t", function() y.togglePopup() end},
       {"alt",        "s", function() y.toggleLayout() end},

@@ -128,20 +128,29 @@ module.resize = function(direction, length, abs)
    require('util').exec(directions[direction])
 end
 
+-- local focusDisplayForSpace = function (spaceId)
+--    local displayId = hs.json.decode((hs.execute(yabaiExec .. "-m query --spaces --space " .. spaceId)))["display"]
+--    require('util').exec(yabaiExec .. "-m display --focus " .. displayId)
+-- end
+
 
 module.moveToWorkspace = function(workspaceId)
+   -- focusDisplayForSpace(workspaceId) -- makes no difference it seems.
    require('util').exec(yabaiExec .. "-m space --focus " .. workspaceId)
 end
 
+
+
 module.moveWindowToWorkspace = function(workspaceId)
    workspaceId = workspaceId or "recent"
+   -- focusDisplayForSpace(workspaceId)
    require('util').exec(yabaiExec .. "-m window --space " .. workspaceId)
 end
 
 module.moveSpaceToDisplay = function(displayId)
    require('util').exec(yabaiExec .. "-m space --display " .. displayId)
    -- Yabai requires a reload post display adjustment sometimes.
-   require('util').exec("sleep 2 && sudo " .. yabaiExec .. "--load-sa")
+   -- require('util').exec("sleep 2 && sudo " .. yabaiExec .. "--load-sa")
 end
 
 module.toggleGaps = function()

@@ -50,13 +50,9 @@ yabai -m space 10 --label s10
 
 
 # window rules
-yabai -m rule --add label=firefox app="^Firefox$" space=web
+# yabai -m rule --add label=firefox app="^Firefox$" space=s1
 # yabai -m rule --add label=emacs app="^Emacs$" space=2
 # yabai -m rule --add app="^Kitty$" space=3
-# yabai -m rule --add label=dingtalk app="^DingTalk$" space=4
-# yabai -m rule --add app="^Spotify$" space=6
-# yabai -m rule --add app="^Discord$" space=7 grid=1:1:0:0:1:1 manage=off
-# yabai -m rule --add app="^Steam$" space=7 manage=off
 yabai -m rule --add label=prefs app="^System Preferences$" manage=off
 yabai -m rule --add label=stats app="^Stats$" manage=off
 # apple calendar auto complete popups
