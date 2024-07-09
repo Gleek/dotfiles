@@ -1,7 +1,7 @@
 local module = {}
 local yabaiExec = "/opt/homebrew/bin/yabai "
 
--- local log = hs.logger.new('yabai', 'debug');
+local log = hs.logger.new('yabai', 'debug');
 module.cons = {};
 module.cons.direction = {
    left=0,
@@ -21,7 +21,7 @@ module.interactives = {
    "swapWindowsDown", "toggleGaps", "rotateWindows", "mirrorX",
    "mirrorY", "zoom", "fullScreen", "togglePopup", "toggleSplit",
    "toggleLayout", "toggleSticky", "toggleTopMost", "resetSpaces",
-   "numberCurrentSpace"
+   "numberCurrentSpace", "organizeSpaces", "organizeApps", "organize"
  }
 
 
@@ -153,6 +153,12 @@ module.moveSpaceToDisplay = function(displayId)
    -- require('util').exec("sleep 2 && sudo " .. yabaiExec .. "--load-sa")
 end
 
+module.moveSpaceIdToDisplay = function(displayId, workspaceId)
+   require('util').exec(yabaiExec .. "-m space " .. workspaceId .. " --display " .. displayId)
+   -- Yabai requires a reload post display adjustment sometimes.
+   -- require('util').exec("sleep 2 && sudo " .. yabaiExec .. "--load-sa")
+end
+
 module.toggleGaps = function()
    require('util').exec(yabaiExec .. "-m space --toggle padding")
    require('util').exec(yabaiExec .. "-m space --toggle gap")
@@ -219,6 +225,65 @@ module.numberCurrentSpace = function()
    end
 end
 
+module.organizeSpaces = function()
+   module.resetSpaces()
+   -- check number of monitors
+   local displays = #hs.json.decode((hs.execute(yabaiExec .. "-m query --displays")))
+   local displayTable = {}
+   if displays == 2 then
+      displayTable = {
+         [1] = {"s4", "s5", "s6", "s7", "s10"},
+         [2] = {"s1", "s2", "s3", "s8", "s9"},
+      }
+   end
+   if displays > 2 then
+      displayTable = {
+         [1] = {"s4", "s5", "s6", "s10"},
+         [2] = {"s1", "s3", "s8"},
+         [3] = {"s2", "s7", "s9"},
+         -- I don't use over 3 displays.
+      }
+   end
+   for display, spaces in pairs(displayTable) do
+      log.i("Moving spaces to display " .. display)
+      for _, space in ipairs(spaces) do
+         log.i("Moving space " .. space .. " to display " .. display)
+         module.moveSpaceIdToDisplay(display, space)
+         -- sleep for some time to allow the space to move to the display.
+         hs.timer.usleep(100000)
+      end
+   end
+end
+
+module.organizeApps = function()
+   local apps = {
+      ["Firefox"] = "s1",
+      ["Emacs"] = "s2",
+      ["kitty"] = "s3",
+      ["Calendar"] = "s3",
+      ["Slack"] = "s4",
+      ["zoom.us"] = "s5",
+      ["Whatsapp"] = "s6"
+   }
+   for appn, space in pairs(apps) do
+      -- app = module.focusApp(app)
+      local app = hs.application.get(appn)
+      if app then
+         log.i("Moving app " .. appn .. " to space " .. space)
+         app:activate()
+         module.moveWindowToWorkspace(space)
+      else
+         log.i("App " .. appn .. " not found")
+      end
+      -- sleep for some time to allow the app to move to the workspace.
+      hs.timer.usleep(100000)
+   end
+end
+
+module.organize = function()
+   module.organizeSpaces()
+   module.organizeApps()
+end
 
 
 return module
