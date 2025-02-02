@@ -59,6 +59,8 @@ yabai -m rule --add label=floater title="^floating-term" manage=off grid=4:4:1:1
 yabai -m rule --add label=maximized title="^fullscreen-term" manage=off grid=4:4:0:0:4:4
 yabai -m rule --add label=chooser title="^chooser" manage=off grid="50:50:15:10:20:35" opacity=0.9
 yabai -m rule --add label=emacs-launcher title="^emacs-launcher" manage=off opacity=0.9
+yabai -m rule --add label="epop" app="Emacs" subrole="AXFloatingWindow" manage=off sticky=on
+
 yabai -m rule --add label=ankiadd title="^Add$" app="^Anki$" manage=off grid=4:4:1:1:2:2
 yabai -m rule --add label=whatsappcall title="WhatsApp Voice Call$" manage=off grid=4:4:1:1:2:2
 
