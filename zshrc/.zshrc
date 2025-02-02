@@ -169,7 +169,3 @@ compinit
 # Completion for kitty kitty + complete setup zsh | source /dev/stdin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh HISTSIZE=10000000
 SAVEHIST=10000000
-
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /Users/umar/Development/projects/Dragger/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/umar/Development/projects/Dragger/node_modules/tabtab/.completions/electron-forge.zsh

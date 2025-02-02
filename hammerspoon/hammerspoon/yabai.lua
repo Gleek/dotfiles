@@ -263,7 +263,8 @@ module.organizeApps = function()
       ["Calendar"] = "s3",
       ["Slack"] = "s4",
       ["zoom.us"] = "s5",
-      ["Whatsapp"] = "s6"
+      ["Whatsapp"] = "s6",
+      ["Google Chrome"] = "s7"
    }
    for appn, space in pairs(apps) do
       -- app = module.focusApp(app)

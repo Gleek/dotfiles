@@ -8,5 +8,4 @@ if [ -z "$ZOOM_LINK" ]; then
   exit 1
 fi
 open "$ZOOM_LINK"
-echo -n "$ZOOM_LINK
-Passcode: $ZOOM_PASS" | pbcopy
+echo -n "$ZOOM_LINK" | pbcopy
