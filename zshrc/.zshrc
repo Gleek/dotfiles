@@ -164,6 +164,8 @@ export DISPLAY=":0"
 
 export SCREENRC=~/.config/screen/screenrc
 
+alias pyshell='source $HOME/.pyenv/bin/activate'
+
 autoload -Uz compinit
 compinit
 # Completion for kitty kitty + complete setup zsh | source /dev/stdin
