@@ -104,7 +104,8 @@ module.bindShell = function()
       {"alt"      , "\\"    , exec.kitty .. "--single-instance gotop"                                                             , true},
       {"alt-shift", "m"     , exec.mpv .. "$(pbpaste)"},
       -- {"alt"      , "d"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh"     , true},
-      {"alt"      , "d"     , "~/.config/emacs/scripts/launch.sh", "full"},
+      -- {"alt"      , "d"     , "~/.config/emacs/scripts/launch.sh", "full"},
+      {"alt"      , "d"     , exec.emacsclient .. "-s \"server\" -e \"(+launch-default-launcher)\""},
       {"alt"      , "x"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/hammerspoon.sh" , true},
       -- {"alt"      , "b"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/qute.sh"        , true},
    }
