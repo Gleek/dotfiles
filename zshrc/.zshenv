@@ -1,4 +1,8 @@
 export GOPATH="$HOME/Development/gocode"
+export GOPRIVATE=$(echo "tvguho.pbz/Mbzngb/*"|tr '[A-Za-z]' '[N-ZA-Mn-za-m]')
+export GOOS=darwin
+export GOARCH=arm64
+export GOPATH="$HOME/Development/gocode"
 # export
 export LC_ALL=en_US.UTF-8 export LANG=en_US.UTF-8 export
 # export PATH=""
