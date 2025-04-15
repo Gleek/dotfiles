@@ -6,6 +6,7 @@ local exec = {
     kitty = "/opt/homebrew/bin/kitty ",
     yabai = "/opt/homebrew/bin/yabai ",
     mpv = "/opt/homebrew/bin/mpv ",
+    notify = "/opt/homebrew/bin/terminal-notifier ",
     emacsclient="/opt/homebrew/bin/emacsclient ",
 }
 
@@ -97,13 +98,12 @@ module.bindShell = function()
         ------------------
         -- Applications --
       ------------------
-      {"alt-shift", "f"     , exec.kitty .. "--single-instance -d ~ ranger"                                                       , true},
       {"alt"      , "return", exec.kitty .. "--single-instance -d ~ -T floating-term screen -dR session"                          , "full"},
       {"shift-alt", "t"     , exec.kitty .. "--single-instance -d ~"},
       {"alt"      , "k"     , "open -a KeePassXC"},
       {"alt"      , "v"     , "open -a Maccy"},
       {"alt-shift", "e"     , exec.emacsclient .. "--eval \"(emacs-everywhere)\""},
-      {"alt"      , "\\"    , exec.kitty .. "--single-instance gotop"                                                             , true},
+      {"alt"      , "\\"    , exec.kitty .. "--single-instance btop"                                                             , true},
       {"alt-shift", "m"     , exec.mpv .. "$(pbpaste)"},
       -- {"alt"      , "d"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh"     , true},
       -- {"alt"      , "d"     , "~/.config/emacs/scripts/launch.sh", "full"},
@@ -111,6 +111,9 @@ module.bindShell = function()
       {"alt"      , "c"     , exec.emacsclient .. "-e \"(+launcher-org-quick-clock-in)\""},
       {"alt"      , "x"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/hammerspoon.sh" , true},
       -- {"alt"      , "b"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/qute.sh"        , true},
+
+      {"cmd-shift-ctrl", "e", "killall -SIGUSR2 Emacs; ".. exec.notify .. " -message 'interrupting emacs' -title 'Emacs'"}
+
     }
     for _, binding in pairs(bindings) do
         hotkey.bind(
