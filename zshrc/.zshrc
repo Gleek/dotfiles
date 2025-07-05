@@ -8,7 +8,8 @@ DISABLE_AUTO_UPDATE="true"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="simple"
+RPROMPT='[%*]'  # Add time on right side
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -165,6 +166,10 @@ export DISPLAY=":0"
 export SCREENRC=~/.config/screen/screenrc
 
 alias pyshell='source $HOME/.pyenv/bin/activate'
+
+# cds to the buffer of the current emacsclient window
+alias emcd="cd \$(emacsclient -e \"(with-current-buffer (window-buffer (car (window-list))) default-directory)\" | sed 's/\"//g')"
+
 
 autoload -Uz compinit
 compinit

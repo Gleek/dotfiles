@@ -24,21 +24,22 @@ module.bindFns = function()
         -----------
         -- Yabai --
         -----------
-        -- {"alt", "tab", function() y.moveFocusRecent() end},
-        -- {"alt", "b",   function() y.moveFocusLeft() end},
-        -- {"alt", "n",   function() y.moveFocusDown() end},
-        -- {"alt", "p",   function() y.moveFocusUp() end},
-        -- {"alt", "f",   function() y.moveFocusRight() end},
+        {"alt", "`", function() y.moveFocusRecent() end},
+        {"alt", "left",   function() y.moveFocusLeft() end},
+        {"alt", "down",   function() y.moveFocusDown() end},
+        {"alt", "up",   function() y.moveFocusUp() end},
+        {"alt", "right",   function() y.moveFocusRight() end},
 
         {"cmd-alt", "left",  function() y.swapWindowsLeft() end},
         {"cmd-alt", "right", function() y.swapWindowsRight() end},
         {"cmd-alt", "up",    function() y.swapWindowsUp() end},
         {"cmd-alt", "down",  function() y.swapWindowsDown() end},
 
-        {"alt", "left",  function() y.moveWindowsLeft() end},
-        {"alt", "right", function() y.moveWindowsRight() end},
-        {"alt", "up",    function() y.moveWindowsUp() end},
-        {"alt", "down",  function() y.moveWindowsDown() end},
+        -- Disabling moving windows as swapping windows feels more intuitive and I need keys for focusing windows
+        -- {"alt", "left",  function() y.moveWindowsLeft() end},
+        -- {"alt", "right", function() y.moveWindowsRight() end},
+        -- {"alt", "up",    function() y.moveWindowsUp() end},
+        -- {"alt", "down",  function() y.moveWindowsDown() end},
 
         {"alt", "1", function() y.moveToWorkspace("s1") end},
         {"alt", "2", function() y.moveToWorkspace("s2") end},
