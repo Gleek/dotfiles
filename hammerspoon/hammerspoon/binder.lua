@@ -35,11 +35,10 @@ module.bindFns = function()
         {"cmd-alt", "up",    function() y.swapWindowsUp() end},
         {"cmd-alt", "down",  function() y.swapWindowsDown() end},
 
-        -- Disabling moving windows as swapping windows feels more intuitive and I need keys for focusing windows
-        -- {"alt", "left",  function() y.moveWindowsLeft() end},
-        -- {"alt", "right", function() y.moveWindowsRight() end},
-        -- {"alt", "up",    function() y.moveWindowsUp() end},
-        -- {"alt", "down",  function() y.moveWindowsDown() end},
+        {"cmd-alt-shift", "left",  function() y.moveWindowsLeft() end},
+        {"cmd-alt-shift", "right", function() y.moveWindowsRight() end},
+        {"cmd-alt-shift", "up",    function() y.moveWindowsUp() end},
+        {"cmd-alt-shift", "down",  function() y.moveWindowsDown() end},
 
         {"alt", "1", function() y.moveToWorkspace("s1") end},
         {"alt", "2", function() y.moveToWorkspace("s2") end},
@@ -102,6 +101,7 @@ module.bindShell = function()
       {"alt"      , "return", exec.kitty .. "--single-instance -d ~ -T floating-term screen -dR session"                          , "full"},
       {"shift-alt", "t"     , exec.kitty .. "--single-instance -d ~"},
       {"alt"      , "k"     , "open -a KeePassXC"},
+      {"alt"      , "b"     , "open -a Firefox"},
       {"alt"      , "v"     , "open -a Maccy"},
       {"alt-shift", "e"     , exec.emacsclient .. "--eval \"(emacs-everywhere)\""},
       {"alt"      , "\\"    , exec.kitty .. "--single-instance btop"                                                             , true},
