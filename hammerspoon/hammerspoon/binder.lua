@@ -103,7 +103,6 @@ module.bindShell = function()
       {"alt"      , "k"     , "open -a KeePassXC"},
       {"alt"      , "b"     , "open -a Firefox"},
       {"alt"      , "v"     , "open -a Maccy"},
-      {"alt-shift", "e"     , exec.emacsclient .. "--eval \"(emacs-everywhere)\""},
       {"alt"      , "\\"    , exec.kitty .. "--single-instance btop"                                                             , true},
       {"alt-shift", "m"     , exec.mpv .. "$(pbpaste)"},
       -- {"alt"      , "d"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh"     , true},
@@ -113,7 +112,8 @@ module.bindShell = function()
       {"alt"      , "x"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/hammerspoon.sh" , true},
       -- {"alt"      , "b"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/qute.sh"        , true},
 
-      {"cmd-shift-ctrl", "e", "killall -SIGUSR2 Emacs; ".. exec.notify .. " -message 'interrupting emacs' -title 'Emacs'"}
+      {"cmd-shift-ctrl", "e", "killall -SIGUSR2 Emacs; ".. exec.notify .. " -message 'interrupting emacs' -title 'Emacs'"},
+      {"cmd-shift-ctrl", "c", "/Users/umar/Development/config/hammerspoon/hammerspoon/notif.sh > /tmp/notif.txt"}
 
     }
     for _, binding in pairs(bindings) do
