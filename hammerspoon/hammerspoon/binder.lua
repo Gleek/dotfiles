@@ -74,6 +74,7 @@ module.bindFns = function()
         {"alt",        "a", function() y.toggleGaps() end},
         {"alt",        "e", function() y.toggleSplit() end},
         {"alt-shift",  "r", function() y.rotateWindows() end},
+        {"alt",        "=", function() y.balanceSpace() end},
         {"alt",        "z", function() y.zoom() end},
         {"shift-alt",  "z", function() y.fullScreen() end},
         {"alt",        "t", function() y.togglePopup() end},
@@ -174,7 +175,7 @@ module.bindModal = function()
             if mode[5] then (mode[5])() end
             modalAlert = hs.alert.show(
                 mode[3] .. " mode",
-                {textSize=13, radius=0, textFont="Fira Code", atScreenEdge=2},
+                {textSize=14, radius=0, textFont="Iosevka", atScreenEdge=2},
                 hs.screen.mainScreen(),
                 "inf"
             )

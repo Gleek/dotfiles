@@ -197,6 +197,10 @@ module.toggleSticky = function()
    require('util').exec(yabaiExec .. "-m window --toggle sticky")
 end
 
+module.togglePip = function()
+   require('util').exec(yabaiExec .. "-m window --toggle pip")
+end
+
 module.toggleLayout = function()
    local layout = hs.json.decode((hs.execute(yabaiExec .. "-m query --spaces --space")))["type"]
    layout = layout== "bsp" and "float" or "bsp"
@@ -205,6 +209,10 @@ end
 
 module.toggleTopMost = function()
    require('util').exec(yabaiExec .. "-m window --toggle topmost")
+end
+
+module.balanceSpace = function()
+    require('util').exec(yabaiExec .. "-m space --balance")
 end
 
 module.resetSpaces = function()
