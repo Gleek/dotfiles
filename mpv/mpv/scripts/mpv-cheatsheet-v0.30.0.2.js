@@ -294,6 +294,7 @@ var shortcuts = [
       {keys: '< / >', effect: 'Go backward/forward in the playlist'},
       {keys: 'ENTER', effect: 'Go forward in the playlist'},
       {keys: 'F8', effect: 'Show playlist [UI]'},
+      {keys: 'Tab', effect: 'Show chapters'},
     ]
   },
   {
