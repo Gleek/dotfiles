@@ -20,7 +20,7 @@ opt.cursorline = true
 
 
 opt.termguicolors = true
-opt.background = "light"
+opt.background = "dark"
 opt.signcolumn = "yes"
 
 
