@@ -168,8 +168,8 @@ export SCREENRC=~/.config/screen/screenrc
 alias pyshell='source $HOME/.pyenv/bin/activate'
 
 # cds to the buffer of the current emacsclient window
-alias emcd="cd \$(emacsclient -e \"(with-current-buffer (window-buffer (car (window-list))) default-directory)\" | sed 's/\"//g')"
-
+alias emcd="cd \$(emacsclient -e \"(expand-file-name (with-current-buffer (window-buffer (car (window-list))) default-directory))\" | sed 's/\"//g')"
+alias claude="claude --allow-dangerously-skip-permissions"
 
 autoload -Uz compinit
 compinit
