@@ -19,7 +19,7 @@ module.interactives = {
    "moveFocusRecent", "moveFocusStackPrev", "moveFocusStackNext",
    "swapWindowsLeft", "swapWindowsRight", "swapWindowsUp",
    "swapWindowsDown", "toggleGaps", "rotateWindows", "mirrorX",
-   "mirrorY", "zoom", "fullScreen", "togglePopup", "toggleSplit",
+   "mirrorY", "zoom", "fullScreen", "togglePopup", "toggleSplit", "toggleOpacity",
    "toggleLayout", "toggleSticky", "toggleTopMost", "resetSpaces",
    "numberCurrentSpace", "organizeSpaces", "organizeApps", "organize"
  }
@@ -61,6 +61,8 @@ module.decreaseSizeLeft = function() module.resize(module.cons.direction.right, 
 module.decreaseSizeRight = function() module.resize(module.cons.direction.left, 20) end
 module.decreaseSizeUp = function() module.resize(module.cons.direction.down, -20) end
 module.decreaseSizeDown = function() module.resize(module.cons.direction.up, 20) end
+
+
 
 -- Move focus direction=> takes in module.cons.direction as param
 module.moveFocus = function(direction)
@@ -287,6 +289,19 @@ module.organizeApps = function()
       -- sleep for some time to allow the app to move to the workspace.
       hs.timer.usleep(100000)
    end
+end
+
+module.toggleOpacity = function()
+   hs.timer.doAfter(1, function()
+      local winInfo = hs.json.decode((hs.execute(yabaiExec .. "-m query --windows --window")))
+      if not winInfo then return end
+      local opacity = winInfo["opacity"]
+      if opacity < 1.0 then
+         require('util').exec(yabaiExec .. "-m window --opacity 1.0")
+      else
+         require('util').exec(yabaiExec .. "-m window --opacity 0.7")
+      end
+   end)
 end
 
 module.organize = function()
