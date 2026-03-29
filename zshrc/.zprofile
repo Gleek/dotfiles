@@ -1,11 +1,15 @@
 export PATH="\
 $HOME/.bin:\
+$HOME/.local/bin/:\
 /opt/homebrew/bin:\
 /usr/local/opt/openjdk/bin:\
 /usr/local/opt/coreutils/libexec/gnubin:\
 /usr/local/opt/sqlite/bin:\
 /usr/local/opt/php@7.4/bin:\
 /usr/local/opt/php@7.4/sbin:\
+/opt/homebrew/Cellar/ruby/3.4.3/bin:\
+/opt/homebrew/lib/ruby/gems/3.4.0/bin:\
+/opt/homebrew/opt/curl/bin:\
 /usr/local/bin:\
 /usr/bin:\
 /bin:\
@@ -18,4 +22,5 @@ $GOPATH/bin:\
 /usr/local/opt/fzf/bin:\
 /Applications/dragger.app/Contents/MacOS:\
 /Library/TeX/Distributions/Programs/texbin:\
+/opt/homebrew/opt/mysql-client/bin:\
 "
