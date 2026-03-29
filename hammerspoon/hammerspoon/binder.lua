@@ -110,6 +110,7 @@ module.bindShell = function()
       -- {"alt"      , "d"     , "~/.config/emacs/scripts/launch.sh", "full"},
       {"alt"      , "d"     , exec.emacsclient .. "-s \"server\" -e \"(+launch-default-launcher)\""},
       {"alt"      , "c"     , exec.emacsclient .. "-e \"(+launcher-org-quick-clock-in)\""},
+      {"alt"      , "n"     , exec.emacsclient .. "-e \"(quick-scratchpad-open)\""},
       {"alt"      , "x"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/hammerspoon.sh" , true},
       -- {"alt"      , "b"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/qute.sh"        , true},
 
