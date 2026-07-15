@@ -30,7 +30,10 @@ $GOPATH/bin:\
 /usr/local/opt/fzf/bin:\
 /Applications/dragger.app/Contents/MacOS:\
 /Library/TeX/Distributions/Programs/texbin:\
+/opt/homebrew/opt/mysql-client/bin:\
 "
 if [ -f "$HOME/.zsh_secrets" ]; then
-    source "$HOME/.zsh_secrets"
+	source "$HOME/.zsh_secrets"
 fi
+export VK_ICD_FILENAMES=/opt/homebrew/Cellar/molten-vk/1.3.0/etc/vulkan/icd.d/MoltenVK_icd.json
+export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar/molten-vk/1.3.0/lib:$DYLD_LIBRARY_PATH

@@ -2,6 +2,7 @@
 local module = {}
 local log = hs.logger.new('binder', 'debug');
 local hotkey = require('hs.hotkey')
+local _watchers = {}  -- GC protection for app watchers
 local exec = {
     kitty = "/opt/homebrew/bin/kitty ",
     yabai = "/opt/homebrew/bin/yabai ",
@@ -102,7 +103,7 @@ module.bindShell = function()
       {"alt"      , "return", exec.kitty .. "--single-instance -d ~ -T floating-term screen -dR session"                          , "full"},
       {"shift-alt", "t"     , exec.kitty .. "--single-instance -d ~"},
       {"alt"      , "k"     , "open -a KeePassXC"},
-      {"alt"      , "b"     , "open -a Firefox"},
+      -- {"alt"      , "b"     , "open -a \"Google Chrome\""},
       {"alt"      , "v"     , "open -a Maccy"},
       {"alt"      , "\\"    , exec.kitty .. "--single-instance btop"                                                             , true},
       {"alt-shift", "m"     , exec.mpv .. "$(pbpaste)"},
@@ -195,10 +196,44 @@ module.bindModal = function()
     end
 end
 
+module.bindApp = function()
+    local appBindings = {
+        {
+            app = "Google Chrome",
+            bindings = {
+                {"ctrl", "z", function()
+                    hs.task.new(hs.configdir .. "/toggle_chrome_sidebar", nil, {}):start()
+                end},
+            }
+        }
+    }
+
+    for _, appConfig in pairs(appBindings) do
+        local modal = hotkey.modal.new()
+        for _, binding in pairs(appConfig.bindings) do
+            modal:bind(binding[1], binding[2], binding[3])
+        end
+
+        local focused = hs.application.frontmostApplication()
+        if focused and focused:name() == appConfig.app then modal:enter() end
+
+        local watcher = hs.application.watcher.new(function(name, event)
+            if name == appConfig.app then
+                if event == hs.application.watcher.activated then modal:enter()
+                elseif event == hs.application.watcher.deactivated then modal:exit()
+                end
+            end
+        end)
+        watcher:start()
+        table.insert(_watchers, watcher)
+    end
+end
+
 module.bindKeys = function()
     module.bindFns()
     module.bindShell()
     module.bindModal()
+    module.bindApp()
     -- Figure out a way to disable for emacs
     -- require('holdtoquit').bind()
 end

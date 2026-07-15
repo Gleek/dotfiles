@@ -4,6 +4,8 @@ hs.ipc.cliInstall()
 local binder = require('binder');
 binder.bindKeys()
 
+require("orgclock").start()
+
 
 
 -- Disabling the watcher. Might be the cause for Hammerspoon not responding.

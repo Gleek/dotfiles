@@ -139,13 +139,14 @@ alias icat="kitty +kitten icat"
 
 alias docker=podman
 alias docker-compose=podman-compose
+export DOCKER_HOST=unix:///var/folders/y9/j88y03pd4s14_kybyny5llv40000gn/T/podman/podman-machine-default-api.sock
 
 # alias k='~/.keyboard.sh'
 # alias refreshwifi='sudo dhclient -v -r && sudo dhclient -v wlp3s0'
 alias cf='cd $(dirname $(fzf))'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export GOPATH="$HOME/Development/gocode"
-export GOPRIVATE=$(echo "tvguho.pbz/Mbzngb/*"|tr '[A-Za-z]' '[N-ZA-Mn-za-m]')
+export GOPRIVATE=$(echo "tvguho.pbz/Mbzngb/*,tvguho.pbz/Mbzngb-Ahttrg/*"|tr '[A-Za-z]' '[N-ZA-Mn-za-m]')
 export GOOS=darwin
 export GOARCH=arm64
 # export PATH="$PATH:$GOPATH/bin:/home/umar/.yarn/bin"
@@ -176,3 +177,24 @@ compinit
 # Completion for kitty kitty + complete setup zsh | source /dev/stdin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh HISTSIZE=10000000
 SAVEHIST=10000000
+
+export AWS_CA_BUNDLE="/Users/umar/netskope-certs/netskope-cert-bundle.pem"
+
+export CURL_CA_BUNDLE="/Users/umar/netskope-certs/netskope-cert-bundle.pem"
+
+export SSL_CERT_FILE="/Users/umar/netskope-certs/netskope-cert-bundle.pem"
+
+export GIT_SSL_CAPATH="/Users/umar/netskope-certs/netskope-cert-bundle.pem"
+
+export REQUESTS_CA_BUNDLE="/Users/umar/netskope-certs/netskope-cert-bundle.pem"
+
+export NODE_EXTRA_CA_CERTS="/Users/umar/netskope-certs/netskope-cert-bundle.pem"
+
+export NODE_OPTIONS="--use-openssl-ca"
+
+# bun completions
+[ -s "/Users/umar/.bun/_bun" ] && source "/Users/umar/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
