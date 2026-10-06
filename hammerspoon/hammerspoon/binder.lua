@@ -109,7 +109,6 @@ module.bindShell = function()
       {"alt-shift", "m"     , exec.mpv .. "$(pbpaste)"},
       -- {"alt"      , "d"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/options.sh"     , true},
       -- {"alt"      , "d"     , "~/.config/emacs/scripts/launch.sh", "full"},
-      {"alt"      , "d"     , exec.emacsclient .. "-s \"server\" -e \"(+launch-default-launcher)\""},
       {"alt"      , "c"     , exec.emacsclient .. "-e \"(+launcher-org-quick-clock-in)\""},
       {"alt"      , "n"     , exec.emacsclient .. "-e \"(quick-scratchpad-open)\""},
       {"alt"      , "x"     , "export INTERFACE=TUI && /Users/umar/.config/choose/init /Users/umar/.config/choose/hammerspoon.sh" , true},
@@ -127,6 +126,21 @@ module.bindShell = function()
                 util.exec(binding[3], binding[4])
             end)
     end
+
+    hotkey.bind("alt", "d", function()
+        local space = hs.spaces.focusedSpace()
+        hs.task.new(
+            "/opt/homebrew/bin/emacsclient",
+            nil,
+            {
+                "-s",
+                "server",
+                "-e",
+                string.format("(+launch-default-launcher %d)", space)
+            }
+        ):start()
+    end)
+
 end
 
 

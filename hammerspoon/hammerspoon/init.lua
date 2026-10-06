@@ -5,6 +5,7 @@ local binder = require('binder');
 binder.bindKeys()
 
 require("orgclock").start()
+require("caffeine")
 
 
 
