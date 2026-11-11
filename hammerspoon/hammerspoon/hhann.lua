@@ -26,18 +26,30 @@ local activeScreen = function()
     end
 end
 
+local moveIndicator = function(x, y)
+    if cache.isErasing then
+        cache.canvas[1].frame = {x = x + 6, y = y - 18, w = 20, h = 24}
+    else
+        cache.canvas[1].center = {x = x + 6, y = y - 6}
+    end
+end
+
 local updateMode = function()
-    local mouse = hs.mouse.getRelativePosition()
-    local x, y = mouse.x, mouse.y
     local color = cache.isAnnotating and COLOR or COLOR_DIM
 
-    cache.canvas[1] = {
-        center = {x = x + 6, y = y - 6},
+    cache.canvas[1] = cache.isErasing and {
+        type = "text",
+        text = "E",
+        textSize = 18,
+        textColor = color
+    } or {
         type = "circle",
         radius = 3,
         action = "fill",
         fillColor = color
     }
+    local mouse = hs.mouse.getRelativePosition()
+    moveIndicator(mouse.x, mouse.y)
 end
 
 local updateColor = function(r, g, b)
@@ -136,7 +148,7 @@ module.startAnnotating = function()
                 currentElementIndex = nil
             end
 
-            cache.canvas[1].center = {x = x + 6, y = y - 6}
+            moveIndicator(x, y)
         end
     )
 
@@ -193,7 +205,7 @@ local setup = function()
             local y = eventLocation["y"] - frame.y
 
             if cache.canvas[1] then
-                cache.canvas[1].center = {x = x + 6, y = y - 6}
+                moveIndicator(x, y)
             end
         end
     )
@@ -293,6 +305,7 @@ module.activateEraser = function()
         cache.tapDrag = nil
     end
     cache.canvas:canvasMouseEvents(true, false, false, false):mouseCallback(eraserCallback)
+    updateMode()
 end
 
 -- Deactivate Eraser mode
@@ -302,6 +315,8 @@ module.deactivateEraser = function()
     -- Optionally restore annotation state
     if cache.isAnnotating then
         module.startAnnotating()
+    else
+        updateMode()
     end
 end
 
