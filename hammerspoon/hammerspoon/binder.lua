@@ -41,28 +41,6 @@ module.bindFns = function()
         {"cmd-alt-shift", "up",    function() y.moveWindowsUp() end},
         {"cmd-alt-shift", "down",  function() y.moveWindowsDown() end},
 
-        {"alt", "1", function() y.moveToWorkspace("s1") end},
-        {"alt", "2", function() y.moveToWorkspace("s2") end},
-        {"alt", "3", function() y.moveToWorkspace("s3") end},
-        {"alt", "4", function() y.moveToWorkspace("s4") end},
-        {"alt", "5", function() y.moveToWorkspace("s5") end},
-        {"alt", "6", function() y.moveToWorkspace("s6") end},
-        {"alt", "7", function() y.moveToWorkspace("s7") end},
-        {"alt", "8", function() y.moveToWorkspace("s8") end},
-        {"alt", "9", function() y.moveToWorkspace("s9") end},
-        {"alt", "0", function() y.moveToWorkspace("s10") end},
-
-        {"shift-alt", "1", function() y.moveWindowToWorkspace("s1") end},
-        {"shift-alt", "2", function() y.moveWindowToWorkspace("s2") end},
-        {"shift-alt", "3", function() y.moveWindowToWorkspace("s3") end},
-        {"shift-alt", "4", function() y.moveWindowToWorkspace("s4") end},
-        {"shift-alt", "5", function() y.moveWindowToWorkspace("s5") end},
-        {"shift-alt", "6", function() y.moveWindowToWorkspace("s6") end},
-        {"shift-alt", "7", function() y.moveWindowToWorkspace("s7") end},
-        {"shift-alt", "8", function() y.moveWindowToWorkspace("s8") end},
-        {"shift-alt", "9", function() y.moveWindowToWorkspace("s9") end},
-        {"shift-alt", "0", function() y.moveWindowToWorkspace("s10") end},
-
         {"ctrl-alt", "down", function() y.moveSpaceToDisplay(1) end},
         {"ctrl-alt", "left", function() y.moveSpaceToDisplay(2) end},
         {"ctrl-alt", "up", function() y.moveSpaceToDisplay(3) end},
@@ -89,6 +67,18 @@ module.bindFns = function()
     }
     for _, binding in pairs(bindings) do
         hotkey.bind(binding[1], binding[2], binding[3])
+    end
+
+    -- Add Control variants for when Secure Input blocks Option shortcuts.
+    for i = 1, 10 do
+        local key = tostring(i % 10)
+        local workspace = "s" .. i
+        local function switchWorkspace() y.moveToWorkspace(workspace) end
+        local function moveWindow() y.moveWindowToWorkspace(workspace) end
+        hotkey.bind("alt", key, switchWorkspace)
+        hotkey.bind("ctrl-alt", key, switchWorkspace)
+        hotkey.bind("shift-alt", key, moveWindow)
+        hotkey.bind("ctrl-alt-shift", key, moveWindow)
     end
 end
 
